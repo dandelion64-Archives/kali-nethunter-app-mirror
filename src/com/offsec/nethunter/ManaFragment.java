@@ -432,7 +432,7 @@ public class ManaFragment extends Fragment {
                 Intent intent =
                         new Intent("com.offsec.nhterm.RUN_SCRIPT_NH");
                 intent.addCategory(Intent.CATEGORY_DEFAULT);
-                intent.putExtra("com.offsec.nhterm.iInitialCommand", "cd /usr/share/hostapd-wpe/certs && ./bootstrap");
+                intent.putExtra("com.offsec.nhterm.iInitialCommand", "cd /etc/hostapd-wpe/certs/ && ./bootstrap");
                 startActivity(intent);
             });
 
