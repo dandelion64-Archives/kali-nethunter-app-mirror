@@ -44,3 +44,4 @@ while IFS= read -r line; do
     fi
 done < /data/data/$APP_PGK_NAME/files/scripts/kaliservices
 bklog "[+] Kali services should be started!"
+
