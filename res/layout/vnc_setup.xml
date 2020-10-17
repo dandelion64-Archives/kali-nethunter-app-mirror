@@ -7,7 +7,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -31,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Setup Local Server"
-                android:textColor="#ffffffff" />
+                android:textColor="#ffffffff"
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,7 +50,8 @@
                     android:layout_marginEnd="10dp"
                     android:checked="false"
                     android:onClick="vncLocalClick"
-                    android:text="Localhost Only" />
+                    android:text="Localhost Only"
+                    tools:ignore="HardcodedText" />
 
                 <CheckBox
                     android:id="@+id/vnc_serviceCheckBox"
@@ -57,7 +60,8 @@
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:text="Enable at boot" />
+                    android:text="Enable at boot"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -77,7 +81,8 @@
                     android:layout_marginEnd="20dp"
                     android:paddingTop="10dp"
                     android:text="USER:"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -88,7 +93,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:text="DISPLAY:"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -132,7 +138,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Start Server"
-                    android:textColor="#ffffffff" />
+                    android:textColor="#ffffffff"
+                    tools:ignore="HardcodedText"
+                    style="?android:attr/buttonBarButtonStyle" />
 
                 <Button
                     android:id="@+id/stop_vnc"
@@ -140,7 +148,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Stop Server"
-                    android:textColor="#ffffffff" />
+                    android:textColor="#ffffffff"
+                    tools:ignore="HardcodedText"
+                    style="?android:attr/buttonBarButtonStyle" />
             </LinearLayout>
 
 
@@ -173,7 +183,8 @@
                     android:maxLength="17"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/guideline_1" />
+                    app:layout_constraintStart_toEndOf="@+id/guideline_1"
+                    tools:ignore="HardcodedText" />
 
                 <ImageButton
                     android:id="@+id/refreshKeX"
@@ -181,7 +192,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_action_refresh" />
+                    app:srcCompat="@drawable/ic_action_refresh"
+                    tools:ignore="ContentDescription,VectorDrawableCompat" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline_1"
@@ -212,7 +224,8 @@
                     android:text="Active Sessions:"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline_2" />
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_2"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/KeXuser"
@@ -224,7 +237,8 @@
                     android:maxLength="50"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/guideline_2" />
+                    app:layout_constraintStart_toEndOf="@+id/guideline_2"
+                    tools:ignore="HardcodedText" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline_2"

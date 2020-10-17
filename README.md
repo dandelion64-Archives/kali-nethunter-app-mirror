@@ -1,11 +1,11 @@
-# Nethunter Application for Android
+# NetHunter Application for Android
 
-This is the next-gen Nethunter app, which acts as an installer, updater,
+This is the next-gen NetHunter app, which acts as an installer
 and interface for the Kali Linux chroot.
 
 ## Setting up Android Studio
 
-You may want to build a version of the Nethunter application for testing or own peace of mind.  Here's a quick guide on getting started.
+You may want to build a version of the NetHunter application for testing or own peace of mind.  Here's a quick guide on getting started.
 
 [Download Android Studio](http://developer.android.com/sdk/index.html)
 
@@ -36,14 +36,13 @@ When you first launch the program you may need to sync Gradle with your project.
 
 ## Running your application
 
-If your device is connected to your computer then you can click Run > Run 'nethunter app' then click on your device.  The emulator is not going to give you accurate results so its best to test only on the device.  If you want an APK go to Build > Build apk.
+If your device is connected to your computer then you can click Run > Run 'NetHunter app' then click on your device.  The emulator is not going to give you accurate results so its best to test only on the device.  If you want an APK go to Build > Build apk.
 
 
 # Structure of Application
 
 A brief rundown of the files and folders:
 ```bash
-androidwversionmanager <-- The app updater
 nethunter-app
   manifests
     AndroidManifest.xml <-- Manages permissions among other things

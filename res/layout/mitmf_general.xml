@@ -1,4 +1,5 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -32,7 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Interface" />
+                android:text="Interface"
+                tools:ignore="HardcodedText" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -45,14 +47,16 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="General Settings"
-                android:id="@+id/textView17" />
+                android:id="@+id/textView17"
+                tools:ignore="HardcodedText" />
 
             <ImageView
                 android:paddingTop="10px"
                 android:paddingBottom="5px"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                tools:ignore="ContentDescription,PxUsage" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -101,7 +105,8 @@
                 android:text="SMB trap"
                 android:id="@+id/mitmf_smb_trap"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                tools:ignore="HardcodedText" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -133,20 +138,23 @@
                 android:paddingBottom="5px"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                tools:ignore="ContentDescription,PxUsage" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="ScreenShotter" />
+                android:text="ScreenShotter"
+                tools:ignore="HardcodedText" />
 
             <ImageView
                 android:paddingTop="10px"
                 android:paddingBottom="5px"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                tools:ignore="ContentDescription,PxUsage" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -174,7 +182,8 @@
                     android:inputType="number"
                     android:ems="10"
                     android:id="@+id/mitmf_screen_interval"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:importantForAutofill="no" />
                 <!--android:enabled="@{mitmfScreenshotter.checked}"-->
             </LinearLayout>
 
@@ -183,7 +192,8 @@
                 android:paddingBottom="5px"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                tools:ignore="ContentDescription,PxUsage" />
 
     </LinearLayout>
 

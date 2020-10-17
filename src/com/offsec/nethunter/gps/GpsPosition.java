@@ -1,7 +1,7 @@
 package com.offsec.nethunter.gps;
 
-
 import java.util.Locale;
+
 
 /**
  * Created by Danial on 2/23/2015.

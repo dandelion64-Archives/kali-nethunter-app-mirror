@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -16,14 +17,17 @@
         android:layout_marginStart="4dp"
         android:textSize="18sp"
         android:textColor="@color/accent_material_dark"
-        android:text="Title:"/>
+        android:text="Title:"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/f_nethunter_add_adb_et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_marginStart="4dp"/>
+        android:layout_marginStart="4dp"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +41,8 @@
             android:layout_weight="0.9"
             android:textSize="18sp"
             android:textColor="@color/accent_material_dark"
-            android:text="Command for getting the output:"/>
+            android:text="Command for getting the output:"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/f_nethunter_add_btn_info_fab1"
@@ -49,7 +54,8 @@
             android:layout_marginEnd="8dp"
             app:elevation="6dp"
             app:fabCustomSize="32dp"
-            app:pressedTranslationZ="12dp" />
+            app:pressedTranslationZ="12dp"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
@@ -57,7 +63,9 @@
         android:id="@+id/f_nethunter_add_adb_et_command"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"/>
+        android:layout_marginStart="4dp"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor,TextFields" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,7 +79,8 @@
             android:layout_weight="0.9"
             android:textSize="18sp"
             android:textColor="@color/accent_material_dark"
-            android:text="Line delimiter:"/>
+            android:text="Line delimiter:"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/f_nethunter_add_btn_info_fab2"
@@ -83,7 +92,8 @@
             android:layout_marginEnd="8dp"
             app:elevation="6dp"
             app:fabCustomSize="32dp"
-            app:pressedTranslationZ="12dp" />
+            app:pressedTranslationZ="12dp"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
@@ -91,7 +101,9 @@
         android:id="@+id/f_nethunter_add_adb_et_delimiter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp" />
+        android:layout_marginStart="4dp"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor,TextFields" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,7 +117,8 @@
             android:text="RunOnCreate"
             android:textSize="18sp"
             android:textColor="@color/accent_material_dark"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/f_nethunter_add_btn_info_fab3"
@@ -116,7 +129,8 @@
             android:textSize="12sp"
             app:elevation="6dp"
             app:fabCustomSize="32dp"
-            app:pressedTranslationZ="12dp" />
+            app:pressedTranslationZ="12dp"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <TextView
@@ -125,7 +139,8 @@
         android:layout_marginStart="4dp"
         android:textSize="18sp"
         android:textColor="@color/accent_material_dark"
-        android:text="Position to insert:">
+        android:text="Position to insert:"
+        tools:ignore="HardcodedText">
     </TextView>
 
     <LinearLayout

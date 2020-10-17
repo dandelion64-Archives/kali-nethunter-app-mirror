@@ -2,6 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center"
                 android:gravity="left"
-                android:text="@string/macchanger_description" />
+                android:text="@string/macchanger_description"
+                tools:ignore="RtlHardcoded" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,7 +36,8 @@
                     android:layout_marginTop="8dp"
                     android:padding="4dp"
                     android:text="Current Hostname: "
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/f_macchanger_hostname_tv"
@@ -61,14 +64,16 @@
                     android:singleLine="true"
                     android:nextFocusUp="@id/f_macchanger_phone_name_et"
                     android:nextFocusLeft="@id/f_macchanger_phone_name_et"
-                    android:layout_toStartOf="@+id/f_macchanger_setHostname_btn" />
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor,TextFields" />
 
                 <Button
                     style="?android:attr/buttonStyleSmall"
                     android:id="@+id/f_macchanger_setHostname_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set Hostname"/>
+                    android:text="Set Hostname"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <TextView
@@ -172,7 +177,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:importantForAutofill="no" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -186,7 +192,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:importantForAutofill="no" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -200,7 +207,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:importantForAutofill="no" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -214,7 +222,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:importantForAutofill="no" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -228,7 +237,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:importantForAutofill="no" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -242,7 +252,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:importantForAutofill="no" />
                 </LinearLayout>
 
                 <Button
@@ -250,14 +261,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GENERATE"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    tools:ignore="HardcodedText" />
 
                 <Button
                     android:id="@+id/f_macchanger_clear_mac_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CLEAR"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 

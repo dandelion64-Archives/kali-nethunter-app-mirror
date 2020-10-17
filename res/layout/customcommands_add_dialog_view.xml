@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -25,7 +26,8 @@
                 android:layout_marginStart="4dp"
                 android:textSize="18sp"
                 android:textColor="@color/accent_material_dark"
-                android:text="Label:"/>
+                android:text="Label:"
+                tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/f_customcommands_add_adb_et_label"
@@ -33,7 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:inputType="text"
-                android:hint="Enter your title name here"/>
+                android:hint="Enter your title name here"
+                tools:ignore="Autofill,HardcodedText"
+                android:importantForAutofill="no" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,7 +50,8 @@
                     android:layout_marginStart="4dp"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
-                    android:text="Command:"/>
+                    android:text="Command:"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -55,7 +60,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:hint="Enter your command string here"/>
+                android:hint="Enter your command string here"
+                tools:ignore="HardcodedText,TextFields"
+                android:importantForAutofill="no" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -69,7 +76,8 @@
                     android:layout_weight="0.4"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
-                    android:text="Send to:"/>
+                    android:text="Send to:"
+                    tools:ignore="HardcodedText" />
 
                 <Spinner
                     android:id="@+id/f_customcommands_add_adb_spr_sendto"
@@ -92,7 +100,8 @@
                     android:layout_weight="0.4"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
-                    android:text="Exec mode:"/>
+                    android:text="Exec mode:"
+                    tools:ignore="HardcodedText" />
 
                 <Spinner
                     android:id="@+id/f_customcommands_add_adb_spr_execmode"
@@ -116,7 +125,8 @@
                     android:text="RunOnBoot"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
-                    android:layout_marginStart="4dp"/>
+                    android:layout_marginStart="4dp"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -127,7 +137,8 @@
                 android:layout_marginStart="4dp"
                 android:textSize="18sp"
                 android:textColor="@color/accent_material_dark"
-                android:text="Position to insert:">
+                android:text="Position to insert:"
+                tools:ignore="HardcodedText">
 
             </TextView>
             <LinearLayout

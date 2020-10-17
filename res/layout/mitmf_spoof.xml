@@ -1,4 +1,5 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -26,13 +27,15 @@
             android:paddingBottom="20px"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            app:srcCompat="@android:drawable/divider_horizontal_bright" />
+            app:srcCompat="@android:drawable/divider_horizontal_bright"
+            tools:ignore="ContentDescription,PxUsage" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Spoof Settings" />
+            android:text="Spoof Settings"
+            tools:ignore="HardcodedText" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -46,13 +49,15 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5px"
             android:paddingTop="10px"
-            app:srcCompat="@android:drawable/divider_horizontal_bright" />
+            app:srcCompat="@android:drawable/divider_horizontal_bright"
+            tools:ignore="ContentDescription,PxUsage" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Redirect Using:" />
+            android:text="Redirect Using:"
+            tools:ignore="HardcodedText" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -64,7 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ARP Mode:" />
+            android:text="ARP Mode:"
+            tools:ignore="HardcodedText" />
 
         <Spinner
             android:layout_width="match_parent"

@@ -35,8 +35,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-//import android.app.Fragment;
-//import android.support.v4.app.FragmentActivity;
 
 public class ManaFragment extends Fragment {
 
@@ -167,11 +165,11 @@ public class ManaFragment extends Fragment {
                     break;
                 case 4:
                     NhPaths.showMessage(context, "Starting HOSTAPD-WPE");
-                    intentClickListener_NH(NhPaths.makeTermTitle("HOSTAPD-WPE") + "ifconfig wlan1 up && /usr/bin/hostapd-wpe /sdcard/nh_files/configs/hostapd-wpe.conf");
+                    intentClickListener_NH(NhPaths.makeTermTitle("HOSTAPD-WPE") + "ip link set wlan1 up && /usr/bin/hostapd-wpe /sdcard/nh_files/configs/hostapd-wpe.conf");
                     break;
                 case 5:
                     NhPaths.showMessage(context, "Starting HOSTAPD-WPE with Karma");
-                    intentClickListener_NH(NhPaths.makeTermTitle("HOSTAPD-WPE-KARMA") + "ifconfig wlan1 up && /usr/bin/hostapd-wpe -k /sdcard/nh_files/configs/hostapd-wpe.conf");
+                    intentClickListener_NH(NhPaths.makeTermTitle("HOSTAPD-WPE-KARMA") + "ip link set wlan1 up && /usr/bin/hostapd-wpe -k /sdcard/nh_files/configs/hostapd-wpe.conf");
                     break;
                 default:
                     NhPaths.showMessage(context, "Invalid script!");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">NetHunter</string>
     <string name="app_nav_home_label">NetHunter</string>
 
@@ -144,7 +144,7 @@
     <string name="start_mana">Start mana</string>
     <string name="bssid">BSSID</string>
     <string name="ssid">SSID</string>
-    <string name="chanel">Channel</string>
+    <string name="channel">Channel</string>
     <string name="enable_karma">Enable karma</string>
     <string name="admin">UAC Bypass</string>
     <string name="choose_language">Keyboard Layout</string>
@@ -161,7 +161,7 @@
     <string name="ps_port">Port (LPORT)</string>
     <string name="ps_payload_url">URL to payload</string>
 
-    <string name="toast_error_permissions">Nethunter App does not have permission to send to Nethunter terminal!</string>
+    <string name="toast_error_permissions">NetHunter App does not have permission to send to NetHunter terminal!</string>
     <string name="toast_install_terminal">Error launching intent. Install Android Terminal!</string>
     <string name="descriptiontext" />
 
@@ -186,7 +186,7 @@
     </string-array>
     <string-array name="interface_opts">
         <item>wlan0 (Internal wireless card)</item>
-        <item>wlan1 (External wireless card)</item>
+        <item tools:ignore="Typos">wlan1 (External wireless card)</item>
         <item>eth0 (Ethernet)</item>
         <item>rndis0 (USB > Ethernet)</item>
         <item>usb0 (USB > Ethernet Nexus7 2013 when tethering | badusb)</item>
@@ -226,7 +226,7 @@
     <string name="mitmf_description">Written by @byt3bl33d3r, MITMf aims to provide a one-stop-shop for Man-In-The-Middle and network attacks while updating and improving existing attacks and techniques.</string>
     <string-array name="mitmf_interface_array">
         <item>wlan0</item>
-        <item>wlan1</item>
+        <item tools:ignore="Typos">wlan1</item>
         <item>eth0</item>
         <item>rndis0</item>
         <item>usb0</item>
@@ -368,7 +368,7 @@
         <item>OSX [.macho]</item>
         <item>Perl [.pl]</item>
         <item>PHP</item>
-        <item>Powershell [.ps1]</item>
+        <item tools:ignore="Typos">Powershell [.ps1]</item>
         <item>Python [.py]</item>
         <item>Tomcat [.war]</item>
         <item>Windows [.exe/.dll]</item>
@@ -403,8 +403,8 @@
     <string name="searchsploit_searchbar">Search Exploits</string>
 
     <!-- Custom Launcher -->
-    <string name="add_lauchner_btn_label">Label: </string>
-    <string name="add_lauchner_btn_command">Command: </string>
+    <string name="add_launcher_btn_label">Label: </string>
+    <string name="add_launcher_btn_command">Command: </string>
     <string name="toast_input_error_launcher">Invalid arguments given!</string>
     <string name="installing_notice">Installing Chroot…</string>
     <string name="drawer_opened">Drawer opened</string>
@@ -425,7 +425,7 @@
     <string-array name="nmap_interface_array">
         <item>Select interface</item>
         <item>wlan0</item>
-        <item>wlan1</item>
+        <item tools:ignore="Typos">wlan1</item>
         <item>eth0</item>
         <item>rndis0</item>
     </string-array>
@@ -493,7 +493,7 @@
     <string name="edit_whitelist_file">Edit whitelist file.</string>
     <string name="type_wlan_interface">Type wlan interface</string>
     <string name="scan_networks">Scan Networks</string>
-    <string name="channel">Channel</string>
+    <string name="deauth_channel">Channel</string>
     <string name="whitelist">Whitelist</string>
     <string name="deauthenticate_anyone_besides_me">Deauthenticate anyone besides me</string>
     <string name="start_deauthentication">Start Deauthentication :)</string>

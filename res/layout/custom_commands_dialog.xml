@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -18,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_lauchner_btn_label"
+                android:text="@string/add_launcher_btn_label"
 
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
@@ -28,7 +29,9 @@
                 android:layout_width="match_parent"
 
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white">
+                android:textColor="@android:color/white"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor,TextFields">
 
                 <requestFocus />
             </EditText>
@@ -37,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="@string/add_lauchner_btn_command"
+                android:text="@string/add_launcher_btn_command"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
@@ -47,7 +50,9 @@
 
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor,TextFields" />
 
             <RelativeLayout
                 android:orientation="horizontal"
@@ -59,16 +64,17 @@
                     android:id="@+id/run_in_shell_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_above="@+id/add_lauchner_btn_execmode_text"
-                    android:layout_alignEnd="@+id/add_lauchner_btn_execmode_text"
+                    android:layout_above="@+id/add_launcher_btn_execmode_text"
+                    android:layout_alignEnd="@+id/add_launcher_btn_execmode_text"
                     android:layout_alignParentStart="true"
                     android:text="Send to:"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    tools:ignore="HardcodedText" />
 
 
                 <TextView
-                    android:id="@+id/add_lauchner_btn_execmode_text"
+                    android:id="@+id/add_launcher_btn_execmode_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/spinnerExecMode"
@@ -78,7 +84,8 @@
                     android:text="Exec mode: "
 
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    tools:ignore="HardcodedText" />
                 <Spinner
                     android:id="@+id/spinnerRun_in_shell"
                     android:layout_width="wrap_content"
@@ -99,7 +106,7 @@
 
                     android:paddingTop="10dp"
                     android:layout_below="@+id/spinnerRun_in_shell"
-                    android:layout_toEndOf="@+id/add_lauchner_btn_execmode_text" />
+                    android:layout_toEndOf="@+id/add_launcher_btn_execmode_text" />
 
             </RelativeLayout>
 
@@ -115,7 +122,8 @@
                     android:layout_alignParentBottom="true"
                     android:text="Run at boot:"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    tools:ignore="HardcodedText" />
 
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -124,7 +132,7 @@
                     android:id="@+id/custom_comands_runAtBoot"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:checked="false"
-                    android:layout_marginLeft="3dp"
+                    android:layout_marginStart="3dp"
                     android:layout_marginBottom="-8dp"
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/textView10" />

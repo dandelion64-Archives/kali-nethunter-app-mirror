@@ -23,11 +23,6 @@ import com.offsec.nethunter.utils.ShellExecuter;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-/**
- * Created by nik on 20/02/17.
- */
-
-
 
 
     public class DeAuthFragment  extends Fragment {
@@ -67,7 +62,7 @@ import androidx.fragment.app.FragmentActivity;
         start.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 String whitelist_command;
-                new BootKali("ifconfig " + wlan.getText() + " up");
+                new BootKali("ip link set " + wlan.getText() + " up");
                 try {
                     Thread.sleep(1000);
                     new BootKali("airmon-ng start  " + wlan.getText()).run_bg();
@@ -91,7 +86,7 @@ import androidx.fragment.app.FragmentActivity;
             new BootKali("cp /sdcard/nh_files/deauth/scan.sh /root/scan.sh && chmod +x /root/scan.sh").run_bg();
             String cmd = "./root/scan.sh " + wlan.getText() + " | tr -s [:space:] > /sdcard/nh_files/deauth/output.txt";
             try {
-                new BootKali("ifconfig " + wlan.getText() + " up").run_bg();
+                new BootKali("ip link set " + wlan.getText() + " up").run_bg();
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();

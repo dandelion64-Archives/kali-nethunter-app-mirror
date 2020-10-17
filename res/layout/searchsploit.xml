@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,17 +20,19 @@
             android:baselineAligned="false"
             android:measureWithLargestChild="false"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/numex" />
+            android:layout_toEndOf="@+id/numex"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/base_listItem_LR"
+            android:layout_marginStart="@dimen/base_listItem_LR"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="numex"
             android:id="@+id/numex"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            tools:ignore="HardcodedText" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -62,7 +65,8 @@
             android:id="@+id/textView17"
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/exdb_platform_spinner"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,15 +77,17 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/exdb_type_spinner"
             android:layout_toStartOf="@+id/exdb_type_spinner"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            tools:ignore="HardcodedText" />
     </RelativeLayout>
     <Button
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LOAD DB (1st run only)"
-        android:id="@+id/serchsploit_loadDB"
-        android:textAlignment="center" />
+        android:id="@+id/searchsploit_loadDB"
+        android:textAlignment="center"
+        tools:ignore="HardcodedText" />
 
 
     <ListView

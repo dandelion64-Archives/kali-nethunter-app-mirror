@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
@@ -15,12 +16,14 @@
             android:baselineAligned="false"
             android:measureWithLargestChild="false"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/nmap_scan_button" />
+            android:layout_toEndOf="@+id/nmap_scan_button"
+            android:importantForAutofill="no"
+            tools:ignore="TextFields" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/base_listItem_LR"
+            android:layout_marginStart="@dimen/base_listItem_LR"
             android:text="@string/scanButtonText"
             android:layout_centerVertical="true"
             android:id="@+id/nmap_scan_button"
@@ -33,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
 
@@ -116,7 +119,9 @@
                 android:inputType="number"
                 android:digits="0123456789-,:"
                 android:ems="10"
-                android:id="@+id/nmap_ports" />
+                android:id="@+id/nmap_ports"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor" />
 
             <CheckBox
                 android:layout_width="wrap_content"

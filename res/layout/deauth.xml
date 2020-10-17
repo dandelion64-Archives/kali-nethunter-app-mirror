@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/deauth_item"
@@ -12,7 +13,9 @@
         android:text="wlan1"
         android:ems="10"
         android:id="@+id/wlan_interface"
-        android:hint="@string/type_wlan_interface" />
+        android:hint="@string/type_wlan_interface"
+        tools:ignore="HardcodedText"
+        android:importantForAutofill="no" />
 
     <Button
         android:text="@string/scan_networks"
@@ -22,15 +25,16 @@
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:editable="false"
+        android:layout_height="0dp"
         android:id="@+id/TerminalOutputDeAuth"
         android:padding="16sp"
         android:background="@android:color/black"
         android:textColor="@android:color/holo_green_light"
         android:fontFamily="monospace"
         android:layout_weight="1.00"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor,TextFields" />
 
     <EditText
         android:id="@+id/channel"
@@ -38,7 +42,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/channel"
-        android:inputType="number" />
+        android:inputType="number"
+        android:importantForAutofill="no" />
 
     <TableRow
         android:layout_width="match_parent"

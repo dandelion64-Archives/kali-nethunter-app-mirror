@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -13,7 +14,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        tools:ignore="UselessParent">
 
         <TextView
             android:layout_width="match_parent"
@@ -22,7 +24,8 @@
             android:layout_marginEnd="8dp"
             android:textSize="18sp"
             android:textColor="@color/clearTitle"
-            android:text="Arch:"/>
+            android:text="Arch:"
+            tools:ignore="HardcodedText" />
 
         <Spinner
             android:id="@+id/f_chrootmanager_arch_adb_spr"
@@ -40,7 +43,8 @@
             android:layout_marginEnd="8dp"
             android:textSize="18sp"
             android:textColor="@color/clearTitle"
-            android:text="Min or Full install:"/>
+            android:text="Min or Full install:"
+            tools:ignore="HardcodedText" />
 
         <Spinner
             android:id="@+id/f_chrootmanager_minorfull_adb_spr"
@@ -56,9 +60,10 @@
             android:layout_marginTop="18dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Path of the folder you want to donwload to:"
+            android:text="Path of the folder you want to download to:"
             android:textSize="18sp"
-            android:textColor="@color/clearTitle"/>
+            android:textColor="@color/clearTitle"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/f_chrootmanager_storepath_et"
@@ -67,7 +72,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:textSize="18sp"
-            android:textColor="@color/clearTitle"/>
+            android:textColor="@color/clearTitle"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor,TextFields" />
 
     </LinearLayout>
 </LinearLayout>

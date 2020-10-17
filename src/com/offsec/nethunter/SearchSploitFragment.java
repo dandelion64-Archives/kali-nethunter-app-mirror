@@ -113,7 +113,7 @@ public class SearchSploitFragment extends Fragment {
             }
         });
         // Load/reload database button
-        final Button searchSearchSploit = rootView.findViewById(R.id.serchsploit_loadDB);
+        final Button searchSearchSploit = rootView.findViewById(R.id.searchsploit_loadDB);
         searchSearchSploit.setVisibility(View.GONE);
         searchSearchSploit.setOnClickListener(v -> {
             final ProgressDialog pd = new ProgressDialog(activity);
@@ -218,7 +218,7 @@ public class SearchSploitFragment extends Fragment {
 
         searchSploitListView = rootView.findViewById(R.id.searchResultsList);
         Long exploitCount = database.getCount();
-        Button searchSearchSploit = rootView.findViewById(R.id.serchsploit_loadDB);
+        Button searchSearchSploit = rootView.findViewById(R.id.searchsploit_loadDB);
         if (exploitCount == 0) {
             searchSearchSploit.setVisibility(View.VISIBLE);
             rootView.findViewById(R.id.search_filters).setVisibility(View.GONE);

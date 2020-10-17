@@ -173,12 +173,6 @@ else
 	if [ "$1" == "ssh" ] && [ "$2" == "stop" ]; then
 		$BUSYBOX chroot $MNT sudo service ssh stop
 	fi
-
-	#UPDATE
-
-	if [ "$1" == "update" ]; then
-		LANG=C PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT sudo /usr/bin/start-update.sh
-	fi
 	
 	#UPDATEAPP - Updates the nethunter-app if installed as system/priv-app
 
@@ -321,7 +315,7 @@ else
 
 	if [ "$1" == "wifite" ]; then
 		$BUSYBOX chroot $MNT sudo /bin/bash -c "chmod 777 /dev/null"
-		ifconfig wlan1 up
+		ip link set wlan1 up
 		sleep 3
 		LANG=C PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT sudo /usr/bin/python3 /usr/bin/wifite
 	fi
@@ -430,19 +424,19 @@ else
 
 	if [ "$1" == "apt-get" ] && [ "$2" == "install" ]; then
 		echo -e "\e[32mHere we go!\n\nInstalling any new metapackages and update/upgrading.\n\nNote that you may be asked to interact during the installation of some packages.\n\n"
-		echo -e "kali-chroot$ /usr/bin/apt-get update\e[0m"
-		LANG=C PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt-get update
+		echo -e "kali-chroot$ /usr/bin/apt update\e[0m"
+		LANG=C PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt update
 		if [ -z ${var+x} ] || [ "$3" != "" ]; then
-			echo -e "\e[32mkali-chroot$ /usr/bin/apt-get -y install "$3"\e[0m"
-			LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt-get -y install "$3"
+			echo -e "\e[32mkali-chroot$ /usr/bin/apt -y install "$3"\e[0m"
+			LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt -y install "$3"
 		fi
-		echo -e "\e[32mkali-chroot$ /usr/bin/apt-get -y dist-upgrade\e[0m"
-		LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt-get -y dist-upgrade
-		LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt-get -y install "$3"
-		echo -e "\e[32mkali-chroot$ /usr/bin/apt-get -y dist-upgrade\e[0m"
-		LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt-get -y dist-upgrade
+		echo -e "\e[32mkali-chroot$ /usr/bin/apt -y dist-upgrade\e[0m"
+		LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt -y dist-upgrade
+		LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt -y install "$3"
+		echo -e "\e[32mkali-chroot$ /usr/bin/apt -y dist-upgrade\e[0m"
+		LANG=C DEBIAN_FRONTEND=noninteractive PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $BUSYBOX chroot $MNT /usr/bin/apt -y dist-upgrade
 		echo -e "\e[32m"
-		printf "\n\nDone!\n\nPress the 'back' key to return to Nethunter.\n\nIf you noticed errors, press the up-arrow key (if your keyboard supports it) to review previously-issued commands.\n"
+		printf "\n\nDone!\n\nPress the 'back' key to return to NetHunter.\n\nIf you noticed errors, press the up-arrow key (if your keyboard supports it) to review previously-issued commands.\n"
 		printf "And remember to use the 'Maintain Chroot' button in the Chroot Manager to keep your chroot up-to-date and to install new metapackages.\n\n"
 		echo -e "\e[0m"
 	fi

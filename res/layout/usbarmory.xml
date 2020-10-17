@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -147,14 +148,16 @@
                         android:layout_height="wrap_content"
                         android:text="manufacturer"
                         android:layout_weight="0.4"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
                     <EditText
                         android:id="@+id/f_usbarmory_et_manufacturer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:layout_weight="0.6"
-                        android:hint=""/>
+                        android:hint=""
+                        tools:ignore="LabelFor" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -184,7 +187,8 @@
                         android:layout_height="wrap_content"
                         android:text="serialnumber"
                         android:layout_weight="0.4"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
                     <EditText
                         android:id="@+id/f_usbarmory_et_serialnumber"
                         android:layout_width="0dp"
@@ -524,19 +528,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint=""
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no"
+                        tools:ignore="LabelFor" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/f_usbarmory_btn_runusbnetworktethering"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RUN IN NETHUNTER TERMINAL"/>
+                    android:text="RUN IN NETHUNTER TERMINAL"
+                    tools:ignore="HardcodedText" />
                 <Button
                     android:id="@+id/f_usbarmory_btn_saveusbnetworktethering"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SAVE CONFIG TO DATABASE"/>
+                    android:text="SAVE CONFIG TO DATABASE"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
         </LinearLayout>

@@ -19,9 +19,7 @@ import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
- /*
-    SQLiteOpenHelper class for nethunter fragment.
- */
+
 public class NethunterSQL extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "NethunterFragment";
     private static NethunterSQL instance;

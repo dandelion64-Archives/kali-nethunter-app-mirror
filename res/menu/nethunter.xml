@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/f_nethunter_action_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
         app:showAsAction="always"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        tools:ignore="AlwaysShowAction,HardcodedText" />
 
     <group
         android:id="@+id/f_nethunter_menu_group1">
@@ -14,17 +16,20 @@
         android:id="@+id/f_nethunter_menu_backupDB"
         android:orderInCategory="100"
         android:title="Backup DB"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" />
     <item
         android:id="@+id/f_nethunter_menu_restoreDB"
         android:orderInCategory="100"
         android:title="Restore DB"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" />
     <item
         android:id="@+id/f_nethunter_menu_ResetToDefault"
         android:orderInCategory="100"
         android:title="Reset to Default"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" />
     </group>
 
 </menu>

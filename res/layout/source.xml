@@ -18,7 +18,8 @@
             android:paddingTop="0px"
             android:gravity="top"
             android:layout_marginLeft="1dip"
-            android:layout_marginRight="1dip" />
+            android:layout_marginRight="1dip"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/update"

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -15,7 +16,7 @@
             android:text="@string/metapackagesExplanation"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
@@ -26,7 +27,8 @@
                 android:checked="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-linux-nethunter" />
+                android:text="kali-linux-nethunter"
+                tools:ignore="HardcodedText" />
 
             <CheckBox
                 android:layout_width="match_parent"
@@ -178,7 +180,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Open kali-metapackages WebSite"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 </ScrollView>
