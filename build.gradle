@@ -53,7 +53,7 @@ android {
         targetSdkVersion 30
         //noinspection HighAppVersionCode
         versionCode 2020040400
-        versionName '2021.4-kimocoder'
+        versionName '2021.4-dev'
         multiDexEnabled true
     }
 
