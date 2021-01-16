@@ -10,7 +10,6 @@ import android.media.AudioTrack;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -47,10 +46,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 public class BTFragment extends Fragment {
 
     private SharedPreferences sharedpreferences;
-    private NhPaths nh;
+    public static NhPaths nh;
     private Context context;
     private Activity activity;
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -111,7 +112,7 @@ public class BTFragment extends Fragment {
     }
 
     public void SetupDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         sharedpreferences = activity.getSharedPreferences("com.offsec.nethunter", Context.MODE_PRIVATE);
         builder.setTitle("Welcome to Bluetooth Arsenal!");
         builder.setMessage("In order to make sure everything is working, an initial setup needs to be done.");
@@ -193,7 +194,7 @@ public class BTFragment extends Fragment {
 
     public static class MainFragment extends BTFragment {
         private Context context;
-        private NhPaths nh;
+        public static NhPaths nh;
         final ShellExecuter exe = new ShellExecuter();
         private String selected_iface;
         String selected_addr;
@@ -275,7 +276,7 @@ public class BTFragment extends Fragment {
                         BTstatus.setText("Stopped");
                     }
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Enable dbus service first!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "Enable dbus service first!", Toast.LENGTH_SHORT).show();
                     btSwitch.setChecked(false);
                 }
             });
@@ -394,7 +395,7 @@ public class BTFragment extends Fragment {
                 } else {
                     final String[] ifacesArray = outputHCI.split("\n");
                     ifaces.setAdapter(new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, ifacesArray));
-                    Integer lastiface = sharedpreferences.getInt("selected_iface", 0);
+                    int lastiface = sharedpreferences.getInt("selected_iface", 0);
                     ifaces.setSelection(lastiface);
                 }
             });
@@ -424,7 +425,7 @@ public class BTFragment extends Fragment {
         public void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             context = getContext();
-            Activity activity = getActivity();
+            getActivity();
         }
 
         @Override
@@ -475,7 +476,7 @@ public class BTFragment extends Fragment {
                     String l2ping_interface = hci_interface.getText().toString();
                     intentClickListener_NH("echo -ne \"\\033]0;Pinging BT device\\007\" && clear;l2ping -i " + l2ping_interface + " -s " + l2ping_size + " -c " + l2ping_count + flood + reverse + " " + l2ping_target + " && echo \"\nPinging done, closing in 3 secs..\";sleep 3 && exit");
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -487,7 +488,7 @@ public class BTFragment extends Fragment {
                 if (!sdp_target.equals(""))
                     intentClickListener_NH("echo -ne \"\\033]0;RFComm Scan\\007\" && clear;rfcomm_scan " + sdp_target);
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
             });
 
             //Redfang
@@ -499,7 +500,7 @@ public class BTFragment extends Fragment {
                 if (!redfang_range.equals(""))
                     intentClickListener_NH("echo -ne \"\\033]0;Redfang\\007\" && clear;fang -r " + redfang_range + " -o " + redfang_logfile);
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "No target range!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "No target range!", Toast.LENGTH_SHORT).show();
             });
 
             //Blueranger
@@ -510,7 +511,7 @@ public class BTFragment extends Fragment {
                 if (!blueranger_target.equals(""))
                     intentClickListener_NH("echo -ne \"\\033]0;Blueranger\\007\" && clear;blueranger " + blueranger_interface + " " + blueranger_target);
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
             });
 
             //Start SDP Tool
@@ -531,12 +532,12 @@ public class BTFragment extends Fragment {
             String sdp_target = sdp_address.getText().toString();
             String sdp_interface = hci_interface.getText().toString();
 
-            getActivity().runOnUiThread(() -> {
+            requireActivity().runOnUiThread(() -> {
                 if (!sdp_target.equals("")) {
                     String CMDout = exe.RunAsRootOutput("bootkali custom_cmd sdptool -i " + sdp_interface + " browse " + sdp_target + " | sed '/^\\[/d' | sed '/^Linux/d'");
                     output.setText(CMDout);
                 } else
-                    Toast.makeText(getActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
             });
         }
 
@@ -595,7 +596,7 @@ public class BTFragment extends Fragment {
                 if (target_class.equals(" -c ")) target_class = "";
                 if (target_name.equals(" -n \"\"")) target_name = "";
                 if (target_address.equals(" -a ") && target_name.equals("") && target_class.equals("")) {
-                    Toast.makeText(getActivity().getApplicationContext(), "Please enter at least one parameter!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "Please enter at least one parameter!", Toast.LENGTH_SHORT).show();
                 } else {
                     final String target_classname = target_class + target_name;
                     if (!target_address.equals(" -a ")) {
@@ -617,7 +618,7 @@ public class BTFragment extends Fragment {
             final TextView currentClassType = BTFragment.findViewById(R.id.currentClassType);
             final TextView currentName = BTFragment.findViewById(R.id.currentName);
 
-            getActivity().runOnUiThread(() -> {
+            requireActivity().runOnUiThread(() -> {
                 String selectedIface = spoof_interface.getText().toString();
                 String currentAddress_CMD = exe.RunAsRootOutput("bootkali custom_cmd hciconfig " + selectedIface + " | awk '/Address/ { print $3 }'");
                 if (!currentAddress_CMD.equals("")) {
@@ -632,15 +633,15 @@ public class BTFragment extends Fragment {
                     String currentNameCMD = exe.RunAsRootOutput("bootkali custom_cmd hciconfig " + selectedIface + " -a | grep Name | cut -d\\' -f2");
                     currentName.setText(currentNameCMD);
                 } else
-                    Toast.makeText(getActivity().getApplicationContext(), "Interface is down!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "Interface is down!", Toast.LENGTH_SHORT).show();
             });
         }
     }
 
     public static class CWFragment extends BTFragment {
         private Context context;
-        private String selected_mode;
-        private NhPaths nh;
+        public String selected_mode;
+        public NhPaths nh;
         final ShellExecuter exe = new ShellExecuter();
 
         @Override
@@ -719,14 +720,14 @@ public class BTFragment extends Fragment {
                                 "carwhisperer " + cw_iface + " tempi.raw tempo.raw " + cw_target + " " + cw_channel + "; rm tempi.raw && rm tempo.raw;echo \"\nInjection done, closing in 3 secs..\";sleep 3 && exit");
                     }
                 } else
-                    Toast.makeText(getActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
             });
 
             //Kill
             Button StopCWButton = rootView.findViewById(R.id.stop_cw);
             StopCWButton.setOnClickListener( v -> {
                     exe.RunAsRoot(new String[]{"bootkali custom_cmd pkill carwhisperer"});
-                    Toast.makeText(getActivity().getApplicationContext(), "Killed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), "Killed", Toast.LENGTH_SHORT).show();
                     });
 
             //Stream or play audio
@@ -750,11 +751,15 @@ public class BTFragment extends Fragment {
                         byte[] data = new byte[200];
                         int n = 0;
                         try {
-                            while ((n = s.read(data)) != -1)
+                            while (true) {
+                                assert s != null;
+                                if ((n = s.read(data)) == -1) break;
                                 synchronized (audioTrack) {
                                     audioTrack.write(data, 0, n);
                                 }
+                            }
                         } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     });
                 }
@@ -771,27 +776,26 @@ public class BTFragment extends Fragment {
                                  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
             if (requestCode == 1001) {
-                if (resultCode == Activity.RESULT_OK) {
-                    ShellExecuter exe = new ShellExecuter();
-                    EditText injectfilename = getActivity().findViewById(R.id.injectfilename);
-                    String FilePath = data.getData().getPath();
-                    FilePath = exe.RunAsRootOutput("echo " + FilePath + " | sed -e 's/\\/document\\/primary:/\\/sdcard\\//g' ");
-                    injectfilename.setText(FilePath);
+                if (resultCode != Activity.RESULT_OK) {
+                    return;
                 }
+                ShellExecuter exe = new ShellExecuter();
+                EditText injectfilename = requireActivity().findViewById(R.id.injectfilename);
+                String FilePath = data.getData().getPath();
+                FilePath = exe.RunAsRootOutput("echo " + FilePath + " | sed -e 's/\\/document\\/primary:/\\/sdcard\\//g' ");
+                injectfilename.setText(FilePath);
             }
         }
 
     public static class PreferencesData {
 
         public static void saveString(Context context, String key, String value) {
-            SharedPreferences sharedPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(context);
+            SharedPreferences sharedPrefs = getDefaultSharedPreferences(context);
             sharedPrefs.edit().putString(key, value).apply();
         }
 
         public static String getString(Context context, String key, String defaultValue) {
-            SharedPreferences sharedPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(context);
+            SharedPreferences sharedPrefs = getDefaultSharedPreferences(context);
             return sharedPrefs.getString(key, defaultValue);
         }
     }
