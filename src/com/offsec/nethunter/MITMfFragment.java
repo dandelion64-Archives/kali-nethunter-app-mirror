@@ -18,7 +18,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.offsec.nethunter.databinding.MitmfGeneralBinding;
 import com.offsec.nethunter.databinding.MitmfInjectBinding;
@@ -29,13 +35,6 @@ import com.offsec.nethunter.utils.ShellExecuter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 public class MITMfFragment extends Fragment {
 
@@ -102,7 +101,7 @@ public class MITMfFragment extends Fragment {
 
     /* Start execution menu */
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.mitmf, menu);
     }
 
@@ -148,6 +147,7 @@ public class MITMfFragment extends Fragment {
             super(fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int i) {
             switch (i) {
@@ -325,7 +325,6 @@ public class MITMfFragment extends Fragment {
     public static class MITMfSpoof extends Fragment implements CommandProvider {
 
         private int spoofOption;
-        private ArrayAdapter<CharSequence> redirectAdapter;
         private MitmfSpoofBinding spoofBinding;
         private int arpModeOption;
         private MITMFViewModel viewModel;
@@ -347,7 +346,7 @@ public class MITMfFragment extends Fragment {
 
             // Redirect Spinner
             final Spinner redirectSpinner = spoofBinding.mitmfSpoofRedirectspin;
-            redirectAdapter = ArrayAdapter.createFromResource(context,
+            ArrayAdapter<CharSequence> redirectAdapter = ArrayAdapter.createFromResource(context,
                     R.array.mitmf_spoof_type, android.R.layout.simple_spinner_item);
             redirectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             redirectSpinner.setAdapter(redirectAdapter);
@@ -357,11 +356,8 @@ public class MITMfFragment extends Fragment {
                     String selectedItemText = parent.getItemAtPosition(pos).toString();
                     Log.d("Selected: ", selectedItemText);
                     spoofOption = pos;
-                    if (pos == 3) { /*dhcp*/
-                        viewModel.setShellShockEnabled(true);
-                    } else {
-                        viewModel.setShellShockEnabled(false);
-                    }
+                    /*dhcp*/
+                    viewModel.setShellShockEnabled(pos == 3);
                 }
 
                 @Override
@@ -482,7 +478,7 @@ public class MITMfFragment extends Fragment {
             exe.ReadFile_ASYNC(configFilePath, source);
             Button button = rootView.findViewById(R.id.update);
             button.setOnClickListener(v -> {
-                Boolean isSaved = exe.SaveFileContents(source.getText().toString(), configFilePath);
+                boolean isSaved = exe.SaveFileContents(source.getText().toString(), configFilePath);
                 if (isSaved) {
                     NhPaths.showMessage(context, "Source updated");
                 } else {
@@ -494,8 +490,8 @@ public class MITMfFragment extends Fragment {
     }
 
     private static void cleanCmd() {
-        for (int j = CommandComposed.size() - 1; j >= 0; j--) {
-            CommandComposed.remove(j);
+        if (CommandComposed.size() > 0) {
+            CommandComposed.subList(0, CommandComposed.size()).clear();
         }
     }
 

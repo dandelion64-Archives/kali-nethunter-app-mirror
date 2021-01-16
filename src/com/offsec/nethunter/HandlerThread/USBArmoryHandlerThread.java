@@ -10,7 +10,6 @@ import android.os.Process;
 import androidx.annotation.NonNull;
 
 import com.offsec.nethunter.SQL.USBArmorySQL;
-import com.offsec.nethunter.models.USBArmoryUSBSwitchModel;
 import com.offsec.nethunter.utils.ShellExecuter;
 
 

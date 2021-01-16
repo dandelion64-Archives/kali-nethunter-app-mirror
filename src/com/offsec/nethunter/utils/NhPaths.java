@@ -3,7 +3,6 @@ package com.offsec.nethunter.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
-import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -25,7 +24,6 @@ public class NhPaths implements SharedPreferences.OnSharedPreferenceChangeListen
     public static String NH_SD_FOLDER_NAME;
     public static String SD_PATH;
     public static String APP_SD_FILES_PATH;
-    private static String BASE_PATH;
     public static String NH_SYSTEM_PATH;
     public static String ARCH_FOLDER;
     public static String CHROOT_SD_PATH;
@@ -51,7 +49,7 @@ public class NhPaths implements SharedPreferences.OnSharedPreferenceChangeListen
         APP_SD_FILES_PATH               = SD_PATH + "/" + NH_SD_FOLDER_NAME;
         APP_SD_FILES_IMG_PATH           = APP_SD_FILES_PATH + "/diskimage";
         APP_SD_SQLBACKUP_PATH           = APP_SD_FILES_PATH + "/nh_sql_backups";
-        BASE_PATH                       = "/data/local";
+        String BASE_PATH = "/data/local";
         NH_SYSTEM_PATH                  = BASE_PATH + "/nhsystem";
         ARCH_FOLDER                     = sharedPreferences.getString(SharePrefTag.CHROOT_ARCH_SHAREPREF_TAG, "kali-arm64");
         CHROOT_SUDO                     = "/usr/bin/sudo";

@@ -45,7 +45,7 @@ public class KaliServicesRecyclerViewAdapter extends RecyclerView.Adapter<KaliSe
 	@Override
 	public KaliServicesRecyclerViewAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 		View view = LayoutInflater.from(context).inflate(R.layout.kaliservices_recyclerview_servicetitle, viewGroup, false);
-		return new KaliServicesRecyclerViewAdapter.ItemViewHolder(view);
+		return new ItemViewHolder(view);
 	}
 
 	@Override
@@ -224,7 +224,7 @@ public class KaliServicesRecyclerViewAdapter extends RecyclerView.Adapter<KaliSe
 		}
 	};
 
-	class ItemViewHolder extends RecyclerView.ViewHolder{
+	static class ItemViewHolder extends RecyclerView.ViewHolder{
 		private TextView nametextView;
 		//private Button editbutton;
 		private Switch mSwitch;

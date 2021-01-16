@@ -204,12 +204,11 @@ public class AppNavHomeActivity extends AppCompatActivity implements KaliGPSUpda
             Log.d(TAG, "locationService: " + !(locationService==null));
             if(locationService != null) {
                 locationService.requestUpdates(locationUpdateReceiver);
-                return true; // reattached
             }
             else { // the app was probably re-launched.  the service is running but we've not bound it
                 onLocationUpdatesRequested(receiver);
-                return true;
             }
+            return true; // reattached
         }
         return false; // nothing to reattach to
     }
@@ -555,13 +554,13 @@ public class AppNavHomeActivity extends AppCompatActivity implements KaliGPSUpda
     }
 
     private boolean isAllRequiredPermissionsGranted(){
-        if (!permissionCheck.isAllPermitted(PermissionCheck.DEFAULT_PERMISSIONS)) {
+        if (permissionCheck.isAllPermitted(PermissionCheck.DEFAULT_PERMISSIONS)) {
             permissionCheck.checkPermissions(PermissionCheck.DEFAULT_PERMISSIONS, PermissionCheck.DEFAULT_PERMISSION_RQCODE);
             return false;
-        } else if (!permissionCheck.isAllPermitted(PermissionCheck.NH_TERM_PERMISSIONS)) {
+        } else if (permissionCheck.isAllPermitted(PermissionCheck.NH_TERM_PERMISSIONS)) {
             permissionCheck.checkPermissions(PermissionCheck.NH_TERM_PERMISSIONS, PermissionCheck.NH_TERM_PERMISSIONS_RQCODE);
             return false;
-        } else if (!permissionCheck.isAllPermitted(PermissionCheck.NH_VNC_PERMISSIONS)) {
+        } else if (permissionCheck.isAllPermitted(PermissionCheck.NH_VNC_PERMISSIONS)) {
             permissionCheck.checkPermissions(PermissionCheck.NH_VNC_PERMISSIONS, PermissionCheck.NH_VNC_PERMISSIONS_RQCODE);
         }
 

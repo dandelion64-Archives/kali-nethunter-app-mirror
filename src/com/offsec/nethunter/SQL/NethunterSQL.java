@@ -1,6 +1,5 @@
 package com.offsec.nethunter.SQL;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

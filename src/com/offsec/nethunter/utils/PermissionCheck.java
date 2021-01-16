@@ -61,11 +61,11 @@ public class PermissionCheck {
         for (String permissions:PERMISSIONS){
             if (ActivityCompat.checkSelfPermission(context, permissions) != PackageManager.PERMISSION_GRANTED){
                 Log.e(TAG, "Permissions are NOT all granted.");
-                return false;
+                return true;
             }
         }
         Log.d(TAG, "All permissions are granted.");
-        return true;
+        return false;
     }
 
 }

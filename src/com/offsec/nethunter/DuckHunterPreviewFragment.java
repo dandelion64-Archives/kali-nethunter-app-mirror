@@ -70,34 +70,32 @@ public class DuckHunterPreviewFragment extends Fragment {
     public class PreviewDuckyBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            switch (intent.getStringExtra("ACTION")){
-                case "PREVIEWDUCKY":
-                    activity.sendBroadcast(new Intent().putExtra("ACTION", "SHOULDCONVERT").putExtra("SHOULDCONVERT", false).setAction(BuildConfig.APPLICATION_ID + ".SHOULDCONVERT"));
-                    duckHuntAsyncTask = new DuckHuntAsyncTask(DuckHuntAsyncTask.CONVERT);
-                    duckHuntAsyncTask.setListener(new DuckHuntAsyncTask.DuckHuntAsyncTaskListener() {
-                        @Override
-                        public void onAsyncTaskPrepare() {
-                            previewSource.setText("Loading wait...");
-                        }
+            if ("PREVIEWDUCKY".equals(intent.getStringExtra("ACTION"))) {
+                activity.sendBroadcast(new Intent().putExtra("ACTION", "SHOULDCONVERT").putExtra("SHOULDCONVERT", false).setAction(BuildConfig.APPLICATION_ID + ".SHOULDCONVERT"));
+                duckHuntAsyncTask = new DuckHuntAsyncTask(DuckHuntAsyncTask.CONVERT);
+                duckHuntAsyncTask.setListener(new DuckHuntAsyncTask.DuckHuntAsyncTaskListener() {
+                    @Override
+                    public void onAsyncTaskPrepare() {
+                        previewSource.setText("Loading wait...");
+                    }
 
-                        @Override
-                        public void onAsyncTaskFinished(Object result) {
-                            duckHuntAsyncTask = new DuckHuntAsyncTask(DuckHuntAsyncTask.READ_PREVIEW);
-                            duckHuntAsyncTask.setListener(new DuckHuntAsyncTask.DuckHuntAsyncTaskListener() {
-                                @Override
-                                public void onAsyncTaskPrepare() {
-                                }
+                    @Override
+                    public void onAsyncTaskFinished(Object result) {
+                        duckHuntAsyncTask = new DuckHuntAsyncTask(DuckHuntAsyncTask.READ_PREVIEW);
+                        duckHuntAsyncTask.setListener(new DuckHuntAsyncTask.DuckHuntAsyncTaskListener() {
+                            @Override
+                            public void onAsyncTaskPrepare() {
+                            }
 
-                                @Override
-                                public void onAsyncTaskFinished(Object result) {
-                                    previewSource.setText(result.toString());
-                                }
-                            });
-                            duckHuntAsyncTask.execute("cat " + duckyOutputFile);
-                        }
-                    });
-                    duckHuntAsyncTask.execute("sh " + NhPaths.APP_SCRIPTS_PATH + "/duckyconverter -i " + duckyInputFile + " -o " + duckyOutputFile + " -l " + DuckHunterFragment.lang, intent.getBooleanExtra("SHOULDCONVERT", true));
-                    break;
+                            @Override
+                            public void onAsyncTaskFinished(Object result) {
+                                previewSource.setText(result.toString());
+                            }
+                        });
+                        duckHuntAsyncTask.execute("cat " + duckyOutputFile);
+                    }
+                });
+                duckHuntAsyncTask.execute("sh " + NhPaths.APP_SCRIPTS_PATH + "/duckyconverter -i " + duckyInputFile + " -o " + duckyOutputFile + " -l " + DuckHunterFragment.lang, intent.getBooleanExtra("SHOULDCONVERT", true));
             }
         }
     }

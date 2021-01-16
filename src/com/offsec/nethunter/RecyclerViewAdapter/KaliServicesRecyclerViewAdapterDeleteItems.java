@@ -29,7 +29,7 @@ public class KaliServicesRecyclerViewAdapterDeleteItems extends RecyclerView.Ada
 	@Override
 	public KaliServicesRecyclerViewAdapterDeleteItems.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 		View view = LayoutInflater.from(context).inflate(R.layout.kaliservices_recyclerview_dialog_delete, viewGroup, false);
-		return new KaliServicesRecyclerViewAdapterDeleteItems.ItemViewHolder(view);
+		return new ItemViewHolder(view);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class KaliServicesRecyclerViewAdapterDeleteItems extends RecyclerView.Ada
 		return kaliServicesModelList.size();
 	}
 
-	class ItemViewHolder extends RecyclerView.ViewHolder{
+	static class ItemViewHolder extends RecyclerView.ViewHolder{
 		private CheckBox runOnChrootStartCheckBox;
 		private ItemViewHolder(View view){
 			super(view);

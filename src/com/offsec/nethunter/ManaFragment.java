@@ -2,7 +2,6 @@ package com.offsec.nethunter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -18,7 +17,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
@@ -30,13 +36,6 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 //import android.app.Fragment;
 //import android.support.v4.app.FragmentActivity;
 
@@ -44,7 +43,6 @@ public class ManaFragment extends Fragment {
 
     private ViewPager mViewPager;
 
-    private SharedPreferences sharedpreferences;
     private Integer selectedScriptIndex = 0;
     private final CharSequence[] scripts = {"mana-nat-full", "mana-nat-simple", "mana-nat-bettercap", "mana-nat-simple-bdf", "hostapd-wpe", "hostapd-wpe-karma"};
     private static final String TAG = "ManaFragment";
@@ -91,18 +89,14 @@ public class ManaFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.mana, menu);
     }
 
 
-    public void onPrepareOptionsMenu(Menu menu) {
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
         int pageNum = mViewPager.getCurrentItem();
-        if (pageNum == 0) {
-            menu.findItem(R.id.source_button).setVisible(true);
-        } else {
-            menu.findItem(R.id.source_button).setVisible(false);
-        }
+        menu.findItem(R.id.source_button).setVisible(pageNum == 0);
         activity.invalidateOptionsMenu();
     }
 
@@ -164,11 +158,9 @@ public class ManaFragment extends Fragment {
                     }
                     // we wait ~10 secs before launching msf
                     new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    NhPaths.showMessage(context, "Starting MSF with BDF resource.rc");
-                                    intentClickListener_NH(NhPaths.makeTermTitle("MSF") + "msfconsole -q -r /usr/share/bdfproxy/bdfproxy_msf_resource.rc");
-                                }
+                            () -> {
+                                NhPaths.showMessage(context, "Starting MSF with BDF resource.rc");
+                                intentClickListener_NH(NhPaths.makeTermTitle("MSF") + "msfconsole -q -r /usr/share/bdfproxy/bdfproxy_msf_resource.rc");
                             }, 10000);
                     break;
                 case 4:
@@ -193,7 +185,7 @@ public class ManaFragment extends Fragment {
     }
 
     public void Firstrun() {
-        sharedpreferences = activity.getSharedPreferences("com.offsec.nethunter", Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = activity.getSharedPreferences("com.offsec.nethunter", Context.MODE_PRIVATE);
         intentClickListener_NH("echo -ne \"\\033]0;Mana first setup\\007\"" +
                 "apt update && apt install mana-toolkit hostapd hostapd-wpe");
         sharedpreferences.edit().putBoolean("setup_done", true).apply();
@@ -211,7 +203,7 @@ public class ManaFragment extends Fragment {
         NhPaths.showMessage(context, "Mana Stopped");
     }
 
-    public class TabsPagerAdapter extends FragmentPagerAdapter {
+    public static class TabsPagerAdapter extends FragmentPagerAdapter {
 
 
         TabsPagerAdapter(FragmentManager fm) {
@@ -228,6 +220,7 @@ public class ManaFragment extends Fragment {
             return 8;
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int i) {
             switch (i) {
@@ -368,51 +361,48 @@ public class ManaFragment extends Fragment {
                 Pattern patternKarmaLoud = Pattern.compile(regExpatKarmaLoud, Pattern.MULTILINE);
                 final Matcher matcherKarmaLoud = patternKarmaLoud.matcher(text);
 
-                ifc.post(new Runnable() {
-                    @Override
-                    public void run() {
-                    /*
-                     * Interface
-                     */
-                        if (matcherIfc.find()) {
-                            String ifcValue = matcherIfc.group(1);
-                            ifc.setText(ifcValue);
-                        }
-                    /*
-                     * bssid
-                     */
-                        if (matcherBssid.find()) {
-                            String bssidVal = matcherBssid.group(1);
-                            bssid.setText(bssidVal);
-                        }
-                    /*
-                     * ssid
-                     */
-                        if (matcherSsid.find()) {
-                            String ssidVal = matcherSsid.group(1);
-                            ssid.setText(ssidVal);
-                        }
-                    /*
-                     * channel
-                     */
-                        if (matcherChannel.find()) {
-                            String channelVal = matcherChannel.group(1);
-                            channel.setText(channelVal);
-                        }
-                    /*
-                     * enable_mana
-                     */
-                        if (matcherEnableKarma.find()) {
-                            String enableKarmaVal = matcherEnableKarma.group(1);
-                            enableKarma.setText(enableKarmaVal);
-                        }
-                   /*
-                   * mana_loud
-                   */
-                        if (matcherKarmaLoud.find()) {
-                            String karmaLoudVal = matcherKarmaLoud.group(1);
-                            karmaLoud.setText(karmaLoudVal);
-                        }
+                ifc.post(() -> {
+                /*
+                 * Interface
+                 */
+                    if (matcherIfc.find()) {
+                        String ifcValue = matcherIfc.group(1);
+                        ifc.setText(ifcValue);
+                    }
+                /*
+                 * bssid
+                 */
+                    if (matcherBssid.find()) {
+                        String bssidVal = matcherBssid.group(1);
+                        bssid.setText(bssidVal);
+                    }
+                /*
+                 * ssid
+                 */
+                    if (matcherSsid.find()) {
+                        String ssidVal = matcherSsid.group(1);
+                        ssid.setText(ssidVal);
+                    }
+                /*
+                 * channel
+                 */
+                    if (matcherChannel.find()) {
+                        String channelVal = matcherChannel.group(1);
+                        channel.setText(channelVal);
+                    }
+                /*
+                 * enable_mana
+                 */
+                    if (matcherEnableKarma.find()) {
+                        String enableKarmaVal = matcherEnableKarma.group(1);
+                        enableKarma.setText(enableKarmaVal);
+                    }
+               /*
+               * mana_loud
+               */
+                    if (matcherKarmaLoud.find()) {
+                        String karmaLoudVal = matcherKarmaLoud.group(1);
+                        karmaLoud.setText(karmaLoudVal);
                     }
                 });
             }).start();
@@ -516,44 +506,41 @@ public class ManaFragment extends Fragment {
                 Pattern patternEnablePrivateKey = Pattern.compile(regExpatEnablePrivateKey, Pattern.MULTILINE);
                 final Matcher matcherPrivateKey = patternEnablePrivateKey.matcher(text);
 
-                ifc.post(new Runnable() {
-                    @Override
-                    public void run() {
-                    /*
-                     * Interface
-                     */
-                        if (matcherIfc.find()) {
-                            String ifcValue = matcherIfc.group(1);
-                            ifc.setText(ifcValue);
-                        }
-                    /*
-                     * bssid
-                     */
-                        if (matcherBssid.find()) {
-                            String bssidVal = matcherBssid.group(1);
-                            bssid.setText(bssidVal);
-                        }
-                    /*
-                     * ssid
-                     */
-                        if (matcherSsid.find()) {
-                            String ssidVal = matcherSsid.group(1);
-                            ssid.setText(ssidVal);
-                        }
-                    /*
-                     * channel
-                     */
-                        if (matcherChannel.find()) {
-                            String channelVal = matcherChannel.group(1);
-                            channel.setText(channelVal);
-                        }
-                    /*
-                     * Private Key File
-                     */
-                        if (matcherPrivateKey.find()) {
-                            String PrivateKeyVal = matcherPrivateKey.group(1);
-                            privatekey.setText(PrivateKeyVal);
-                        }
+                ifc.post(() -> {
+                /*
+                 * Interface
+                 */
+                    if (matcherIfc.find()) {
+                        String ifcValue = matcherIfc.group(1);
+                        ifc.setText(ifcValue);
+                    }
+                /*
+                 * bssid
+                 */
+                    if (matcherBssid.find()) {
+                        String bssidVal = matcherBssid.group(1);
+                        bssid.setText(bssidVal);
+                    }
+                /*
+                 * ssid
+                 */
+                    if (matcherSsid.find()) {
+                        String ssidVal = matcherSsid.group(1);
+                        ssid.setText(ssidVal);
+                    }
+                /*
+                 * channel
+                 */
+                    if (matcherChannel.find()) {
+                        String channelVal = matcherChannel.group(1);
+                        channel.setText(channelVal);
+                    }
+                /*
+                 * Private Key File
+                 */
+                    if (matcherPrivateKey.find()) {
+                        String PrivateKeyVal = matcherPrivateKey.group(1);
+                        privatekey.setText(PrivateKeyVal);
                     }
                 });
             }).start();
@@ -587,7 +574,7 @@ public class ManaFragment extends Fragment {
             exe.ReadFile_ASYNC(configFilePath, source);
             Button button = rootView.findViewById(R.id.update);
             button.setOnClickListener(v -> {
-                Boolean isSaved = exe.SaveFileContents(source.getText().toString(), configFilePath);
+                boolean isSaved = exe.SaveFileContents(source.getText().toString(), configFilePath);
                 if (isSaved) {
                     NhPaths.showMessage(context, "Source updated");
                 } else {

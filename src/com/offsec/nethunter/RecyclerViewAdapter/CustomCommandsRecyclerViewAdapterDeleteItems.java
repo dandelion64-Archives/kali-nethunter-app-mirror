@@ -29,7 +29,7 @@ public class CustomCommandsRecyclerViewAdapterDeleteItems extends RecyclerView.A
 	@Override
 	public CustomCommandsRecyclerViewAdapterDeleteItems.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 		View view = LayoutInflater.from(context).inflate(R.layout.customcommands_recyclerview_dialog_delete, viewGroup, false);
-		return new CustomCommandsRecyclerViewAdapterDeleteItems.ItemViewHolder(view);
+		return new ItemViewHolder(view);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class CustomCommandsRecyclerViewAdapterDeleteItems extends RecyclerView.A
 		return customCommandsModelList.size();
 	}
 
-	class ItemViewHolder extends RecyclerView.ViewHolder{
+	static class ItemViewHolder extends RecyclerView.ViewHolder{
 		private CheckBox runOnChrootStartCheckBox;
 		private ItemViewHolder(View view){
 			super(view);

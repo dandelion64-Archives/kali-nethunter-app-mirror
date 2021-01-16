@@ -35,7 +35,6 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.offsec.nethunter.AppNavHomeActivity;
-import com.offsec.nethunter.KaliGpsServiceFragment;
 import com.offsec.nethunter.R;
 import com.offsec.nethunter.utils.NhPaths;
 
@@ -345,16 +344,11 @@ public class LocationUpdateService extends Service implements
         resetListenersTimerTaskHandler.removeCallbacks(resetListenersTimerTask);
     }
 
-    private Runnable resetListenersTimerTask = new Runnable() {
-        @Override
-        public void run() {
-            try { // reset our listeners
-                Log.d(TAG, "Restarting listeners");
-                stopLocationUpdates();
-                requestUpdates(null);
-            } finally {
-            }
-        }
+    private Runnable resetListenersTimerTask = () -> {
+        // reset our listeners
+        Log.d(TAG, "Restarting listeners");
+        stopLocationUpdates();
+        requestUpdates(null);
     };
 
     private Runnable timerTask = new Runnable() {
@@ -429,45 +423,39 @@ public class LocationUpdateService extends Service implements
         Log.d(TAG, "Notification Sent: " + updatedText);
     }
 
-    private final GpsStatus.NmeaListener nmeaListener = new GpsStatus.NmeaListener() {
-        @Override
-        public void onNmeaReceived(long l, String s) {
-            if(!s.startsWith("$GPGGA")) {
-                // if we're using the real GPS as our source, go ahead and send these extra information strings to gpsd
-                if("GPS".equals(lastLocationSourcePublished))
-                    sendUdpPacket(s);
-                return;
-            }
-            String[] fields = s.split(",");
-            int fixType = 0;
-            // int sats = 0;
-            try {
-                fixType = Integer.parseInt(fields[6]);
-                // sats = Integer.parseInt(fields[7]);
-            } catch (NumberFormatException ignored) {
-            } catch (ArrayIndexOutOfBoundsException ignored) {
-            }
-            if(fixType == 0)
-                return;
-            // Log.d(TAG, "sats = " + sats);
-            Log.d(TAG, "Real NMEA: " + s);
-            lastLocationSourceReceived = "NmeaListener";
-            publishLocation(s, "GPS");
+    private final GpsStatus.NmeaListener nmeaListener = (l, s) -> {
+        if(!s.startsWith("$GPGGA")) {
+            // if we're using the real GPS as our source, go ahead and send these extra information strings to gpsd
+            if("GPS".equals(lastLocationSourcePublished))
+                sendUdpPacket(s);
+            return;
         }
+        String[] fields = s.split(",");
+        int fixType = 0;
+        // int sats = 0;
+        try {
+            fixType = Integer.parseInt(fields[6]);
+            // sats = Integer.parseInt(fields[7]);
+        } catch (NumberFormatException ignored) {
+        } catch (ArrayIndexOutOfBoundsException ignored) {
+        }
+        if(fixType == 0)
+            return;
+        // Log.d(TAG, "sats = " + sats);
+        Log.d(TAG, "Real NMEA: " + s);
+        lastLocationSourceReceived = "NmeaListener";
+        publishLocation(s, "GPS");
     };
 
     private boolean firstupdate = true;
-    private final LocationListener locationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            String nmeaSentence = nmeaSentenceFromLocation(location);
+    private final LocationListener locationListener = location -> {
+        String nmeaSentence = nmeaSentenceFromLocation(location);
 
-            Log.d(TAG, "Constructed NMEA: "+nmeaSentence);
-            // we will only publish these constructed sentences if we aren't currently getting real ones from the NmeaListener
-            if(lastLocationSourceReceived.equals("LocationListener"))
-                publishLocation(nmeaSentence, "Network");
-            lastLocationSourceReceived = "LocationListener";
-        }
+        Log.d(TAG, "Constructed NMEA: "+nmeaSentence);
+        // we will only publish these constructed sentences if we aren't currently getting real ones from the NmeaListener
+        if(lastLocationSourceReceived.equals("LocationListener"))
+            publishLocation(nmeaSentence, "Network");
+        lastLocationSourceReceived = "LocationListener";
     };
 
     private void publishLocation(String nmeaSentence, String source) {

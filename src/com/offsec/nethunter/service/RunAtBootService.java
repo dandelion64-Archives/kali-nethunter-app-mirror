@@ -1,33 +1,21 @@
 package com.offsec.nethunter.service;
 
-import android.app.IntentService;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
-import android.os.IBinder;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.offsec.nethunter.AppNavHomeActivity;
-import com.offsec.nethunter.BuildConfig;
-import com.offsec.nethunter.ChrootManagerFragment;
-import com.offsec.nethunter.KaliServicesFragment;
 import com.offsec.nethunter.R;
-import com.offsec.nethunter.RecyclerViewData.NethunterData;
 import com.offsec.nethunter.utils.CheckForRoot;
 import com.offsec.nethunter.utils.NhPaths;
 import com.offsec.nethunter.utils.ShellExecuter;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 

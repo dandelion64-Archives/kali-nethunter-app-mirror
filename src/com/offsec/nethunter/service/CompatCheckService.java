@@ -1,20 +1,14 @@
 package com.offsec.nethunter.service;
 
 import android.app.IntentService;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.IBinder;
-import android.provider.Settings;
-import android.text.TextUtils;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.offsec.nethunter.AppNavHomeActivity;
 import com.offsec.nethunter.BuildConfig;
-import com.offsec.nethunter.ChrootManagerFragment;
 import com.offsec.nethunter.R;
 import com.offsec.nethunter.utils.CheckForRoot;
 import com.offsec.nethunter.utils.NhPaths;

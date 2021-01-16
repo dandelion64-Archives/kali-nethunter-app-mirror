@@ -84,11 +84,11 @@ public class BootKali {
                 "SHLVL=1",
                 "YOU_KNOW_WHAT=THIS_IS_KALI_LINUX_NETHUNER_FROM_JAVA_BINKY"
         };
-        String ENV_OUT = "";
+        StringBuilder ENV_OUT = new StringBuilder();
         for (String aENV : ENV) {
-            ENV_OUT = ENV_OUT + "export " + aENV + " && ";
+            ENV_OUT.append("export ").append(aENV).append(" && ");
         }
-        return ENV_OUT;
+        return ENV_OUT.toString();
     }
 
     //
@@ -147,7 +147,7 @@ public class BootKali {
     // blocking with output
     // sends a command to kali
     public String run() {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         String line;
         try {
             Process process = Runtime.getRuntime().exec("su");
@@ -159,12 +159,12 @@ public class BootKali {
             stdin.close();
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
             while ((line = br.readLine()) != null) {
-                output = output + line + "\n";
+                output.append(line).append("\n");
             }
             br.close();
             br = new BufferedReader(new InputStreamReader(stderr));
             while ((line = br.readLine()) != null) {
-                Log.e("Shell out:", output);
+                Log.e("Shell out:", output.toString());
                 Log.e("Shell Error:", line);
             }
             br.close();
@@ -174,7 +174,7 @@ public class BootKali {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return output;
+        return output.toString();
     }
 
     // sends a command to kali

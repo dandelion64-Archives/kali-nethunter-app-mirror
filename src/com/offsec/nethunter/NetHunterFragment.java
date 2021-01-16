@@ -83,9 +83,7 @@ public class NetHunterFragment extends Fragment {
         NethunterViewModel nethunterViewModel = ViewModelProviders.of(this).get(NethunterViewModel.class);
         nethunterViewModel.init(context);
 
-        nethunterViewModel.getLiveDataNethunterModelList().observe(getViewLifecycleOwner(), nethunterModelList -> {
-            nethunterRecyclerViewAdapter.notifyDataSetChanged();
-        });
+        nethunterViewModel.getLiveDataNethunterModelList().observe(getViewLifecycleOwner(), nethunterModelList -> nethunterRecyclerViewAdapter.notifyDataSetChanged());
 
         nethunterRecyclerViewAdapter = new NethunterRecyclerViewAdapter(context, nethunterViewModel.getLiveDataNethunterModelList().getValue());
         RecyclerView itemRecyclerView = view.findViewById(R.id.f_nethunter_recyclerview);

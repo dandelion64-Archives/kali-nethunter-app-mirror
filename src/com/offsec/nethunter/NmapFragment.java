@@ -18,14 +18,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.offsec.nethunter.utils.NhPaths;
 
 import java.util.ArrayList;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 public class NmapFragment extends Fragment {
 
@@ -401,14 +400,14 @@ public class NmapFragment extends Fragment {
     }
 
     private String getCmd() {
-        String genCmd = "";
+        StringBuilder genCmd = new StringBuilder();
         for (int j = CommandComposed.size() - 1; j >= 0; j--) {
-            genCmd = genCmd + CommandComposed.get(j);
+            genCmd.append(CommandComposed.get(j));
         }
         //Log.d("NMAP SQL:", "nmap --script sqlite-output --script-args=dbname=/tmp/scan.sqlite,dbtable=scandata " + genCmd);
         Log.d("NMAP CMD OUTPUT: ", "nmap " + genCmd);
 
-        return genCmd;
+        return genCmd.toString();
     }
 
     private static void cleanCmd() {

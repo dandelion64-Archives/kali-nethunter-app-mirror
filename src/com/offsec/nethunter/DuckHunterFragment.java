@@ -16,12 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.offsec.nethunter.AsyncTask.DuckHuntAsyncTask;
-import com.offsec.nethunter.utils.NhPaths;
-import com.offsec.nethunter.utils.SharePrefTag;
-
-import java.util.HashMap;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -29,6 +23,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.offsec.nethunter.AsyncTask.DuckHuntAsyncTask;
+import com.offsec.nethunter.utils.NhPaths;
+import com.offsec.nethunter.utils.SharePrefTag;
+
+import java.util.HashMap;
 
 public class DuckHunterFragment extends Fragment {
     private static SharedPreferences sharedpreferences;
@@ -214,14 +214,13 @@ public class DuckHunterFragment extends Fragment {
             super(fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int i) {
-            switch (i) {
-                case 1:
-                    return new DuckHunterPreviewFragment(duckyInputFile, duckyOutputFile);
-                default:
-                    return new DuckHunterConvertFragment(duckyInputFile, duckyOutputFile);
+            if (i == 1) {
+                return new DuckHunterPreviewFragment(duckyInputFile, duckyOutputFile);
             }
+            return new DuckHunterConvertFragment(duckyInputFile, duckyOutputFile);
         }
 
         @Override
@@ -236,22 +235,18 @@ public class DuckHunterFragment extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 1:
-                    return "Preview";
-                default:
-                    return "Convert";
+            if (position == 1) {
+                return "Preview";
             }
+            return "Convert";
         }
     }
 
     public class DuckHuntBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            switch (intent.getStringExtra("ACTION")){
-                case "SHOULDCONVERT":
-                    shouldconvert = intent.getBooleanExtra("SHOULDCONVERT", true);
-                    break;
+            if ("SHOULDCONVERT".equals(intent.getStringExtra("ACTION"))) {
+                shouldconvert = intent.getBooleanExtra("SHOULDCONVERT", true);
             }
         }
     }

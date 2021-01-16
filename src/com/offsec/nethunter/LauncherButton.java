@@ -1,6 +1,3 @@
-/**
- * Created by AnglerVonMur on 26.07.15.
- */
 package com.offsec.nethunter;
 
 import android.content.Context;

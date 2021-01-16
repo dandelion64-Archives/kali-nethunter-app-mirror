@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.offsec.nethunter.R;
-import com.offsec.nethunter.RecyclerViewData.KaliServicesData;
-import com.offsec.nethunter.RecyclerViewData.NethunterData;
 import com.offsec.nethunter.models.NethunterModel;
 
 import java.util.List;
@@ -33,7 +31,7 @@ public class NethunterRecyclerViewAdapterDeleteItems extends RecyclerView.Adapte
 	@Override
 	public NethunterRecyclerViewAdapterDeleteItems.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 		View view = LayoutInflater.from(context).inflate(R.layout.nethunter_recyclerview_dialog_delete, viewGroup, false);
-		return new NethunterRecyclerViewAdapterDeleteItems.ItemViewHolder(view);
+		return new ItemViewHolder(view);
 	}
 
 	@Override
@@ -46,7 +44,7 @@ public class NethunterRecyclerViewAdapterDeleteItems extends RecyclerView.Adapte
 		return nethunterModelList.size();
 	}
 
-	class ItemViewHolder extends RecyclerView.ViewHolder{
+	static class ItemViewHolder extends RecyclerView.ViewHolder{
 		private CheckBox checkBox;
 		private ItemViewHolder(View view){
 			super(view);

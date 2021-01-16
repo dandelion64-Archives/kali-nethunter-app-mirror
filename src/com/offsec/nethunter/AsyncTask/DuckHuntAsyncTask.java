@@ -29,12 +29,12 @@ public class DuckHuntAsyncTask extends AsyncTask<Object, Void, Void> {
         switch (ActionCode) {
             case ATTACK:
                 result=true;
-                String hidgs[] = {"/dev/hidg0", "/dev/hidg1"};
+                String[] hidgs = {"/dev/hidg0", "/dev/hidg1"};
                 for (String hidg : hidgs) {
                     if (!exe.RunAsRootOutput("stat -c '%a' " + hidg).equals("666")){
                         result=false;
                         break;
-                    };
+                    }
                 }
                 if ((boolean)result) {
                     exe.RunAsRootOutput(objects[0].toString());

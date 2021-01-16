@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -41,7 +40,6 @@ import java.util.List;
 public class DuckHunterConvertFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "DuckHunterConvert";
     private String duckyInputFile;
-    private String duckyOutputFile;
     private static final String loadFilePath = "/scripts/ducky/";
     private static final int PICKFILE_RESULT_CODE = 1;
     private Context context;
@@ -52,7 +50,6 @@ public class DuckHunterConvertFragment extends Fragment implements View.OnClickL
 
     public DuckHunterConvertFragment(String inFilePath, String outFilePath){
         this.duckyInputFile = inFilePath;
-        this.duckyOutputFile = outFilePath;
     }
 
     @Override
@@ -140,31 +137,27 @@ public class DuckHunterConvertFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case PICKFILE_RESULT_CODE:
-                if (resultCode == Activity.RESULT_OK) {
-                    if (getView() == null) {
-                        return;
-                    }
-                    String FilePath = data.getData().getPath();
-                    EditText editsource = getView().findViewById(R.id.editSource);
-                    try {
-                        String text = "";
-                        BufferedReader br = new BufferedReader(new FileReader(FilePath));
-                        String line;
-                        while ((line = br.readLine()) != null) {
-                            text += line + '\n';
-                        }
-                        br.close();
-                        editsource.setText(text);
-                        NhPaths.showMessage(context, "Script loaded");
-                    } catch (Exception e) {
-                        NhPaths.showMessage(context, e.getMessage());
-                    }
-                    break;
+        if (requestCode == PICKFILE_RESULT_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (getView() == null) {
+                    return;
                 }
-                break;
-
+                String FilePath = data.getData().getPath();
+                EditText editsource = getView().findViewById(R.id.editSource);
+                try {
+                    String text = "";
+                    BufferedReader br = new BufferedReader(new FileReader(FilePath));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        text += line + '\n';
+                    }
+                    br.close();
+                    editsource.setText(text);
+                    NhPaths.showMessage(context, "Script loaded");
+                } catch (Exception e) {
+                    NhPaths.showMessage(context, e.getMessage());
+                }
+            }
         }
     }
 
@@ -291,11 +284,9 @@ public class DuckHunterConvertFragment extends Fragment implements View.OnClickL
     public class ConvertDuckyBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            switch (intent.getStringExtra("ACTION")){
-                case "WRITEDUCKY":
-                    write_ducky();
-                    activity.sendBroadcast(new Intent().putExtra("ACTION", "PREVIEWDUCKY").setAction(BuildConfig.APPLICATION_ID + ".PREVIEWDUCKY"));
-                    break;
+            if ("WRITEDUCKY".equals(intent.getStringExtra("ACTION"))) {
+                write_ducky();
+                activity.sendBroadcast(new Intent().putExtra("ACTION", "PREVIEWDUCKY").setAction(BuildConfig.APPLICATION_ID + ".PREVIEWDUCKY"));
             }
         }
     }

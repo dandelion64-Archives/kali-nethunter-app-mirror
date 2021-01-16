@@ -40,7 +40,7 @@ public class CustomCommandsRecyclerViewAdapter extends RecyclerView.Adapter<Cust
 	@Override
 	public CustomCommandsRecyclerViewAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 		View view = LayoutInflater.from(context).inflate(R.layout.customcommands_recyclerview_main, viewGroup, false);
-		return new CustomCommandsRecyclerViewAdapter.ItemViewHolder(view);
+		return new ItemViewHolder(view);
 	}
 
 	@Override
@@ -149,7 +149,7 @@ public class CustomCommandsRecyclerViewAdapter extends RecyclerView.Adapter<Cust
 		}
 	};
 
-	class ItemViewHolder extends RecyclerView.ViewHolder{
+	static class ItemViewHolder extends RecyclerView.ViewHolder{
 		private TextView commandLabelTextView;
 		private TextView execEnvTextView;
         private TextView execModeTextView;

@@ -43,19 +43,19 @@ final class NMEA {
 
     public static String formatGpsGsa(GpsStatus gps) {
         String fix = "1";
-        String prn = "";
+        StringBuilder prn = new StringBuilder();
         int nbr_sat = 0;
         Iterator<GpsSatellite> satellites = gps.getSatellites().iterator();
         for (int i = 0; i < 12; i++) {
             if (satellites.hasNext()) {
                 GpsSatellite sat = satellites.next();
                 if (sat.usedInFix()) {
-                    prn = prn + sat.getPrn();
+                    prn.append(sat.getPrn());
                     nbr_sat++;
                 }
             }
 
-            prn = prn + ",";
+            prn.append(",");
         }
 
         if (nbr_sat > 3)
@@ -76,15 +76,14 @@ final class NMEA {
         Iterator<GpsSatellite> satellites = gps.getSatellites().iterator();
         for (int i = 0; i < 3; i++) {
             if (satellites.hasNext()) {
-                String g = Integer.toString(nbr_sat);
+                StringBuilder g = new StringBuilder(Integer.toString(nbr_sat));
                 for (int n = 0; n < 4; n++) {
                     if (satellites.hasNext()) {
                         GpsSatellite sat = satellites.next();
-                        g = g + "," + sat.getPrn() + "," + sat.getElevation() +
-                                "," + sat.getAzimuth() + "," + sat.getSnr();
+                        g.append(",").append(sat.getPrn()).append(",").append(sat.getElevation()).append(",").append(sat.getAzimuth()).append(",").append(sat.getSnr());
                     }
                 }
-                gsv.add(g);
+                gsv.add(g.toString());
             }
         }
         return gsv;

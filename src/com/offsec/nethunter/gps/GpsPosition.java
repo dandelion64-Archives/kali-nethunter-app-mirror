@@ -11,12 +11,7 @@ import java.util.Locale;
 public class GpsPosition {
 
     public float time = 0.0f;
-    private float latitude = 0.0f;
-    private float longitude = 0.0f;
     private int quality = 0;
-    private float direction = 0.0f;
-    private float altitude = 0.0f;
-    private float velocity = 0.0f;
 
     public void updateIsfixed() {
         boolean isFixed = quality > 0;
@@ -24,6 +19,11 @@ public class GpsPosition {
 
     @Override
     public String toString() {
+        float latitude = 0.0f;
+        float longitude = 0.0f;
+        float direction = 0.0f;
+        float altitude = 0.0f;
+        float velocity = 0.0f;
         return String.format(Locale.getDefault(), "GpsPosition: latitude: %f, longitude: %f, time: %f, quality: %d, " +
                         "direction: %f, altitude: %f, velocity: %f", latitude, longitude, time, quality,
                 direction, altitude, velocity);

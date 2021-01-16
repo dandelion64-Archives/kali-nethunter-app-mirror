@@ -42,7 +42,7 @@ public class NethunterRecyclerViewAdapter extends RecyclerView.Adapter<Nethunter
     @Override
     public NethunterRecyclerViewAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.nethunter_recyclerview_main, parent, false);
-        return new NethunterRecyclerViewAdapter.ItemViewHolder(view);
+        return new ItemViewHolder(view);
     }
 
     @Override
@@ -179,7 +179,7 @@ public class NethunterRecyclerViewAdapter extends RecyclerView.Adapter<Nethunter
         }
     };
 
-    class ItemViewHolder extends RecyclerView.ViewHolder{
+    static class ItemViewHolder extends RecyclerView.ViewHolder{
         private TextView titleTextView;
         private RecyclerView resultRecyclerView;
         private Button runButton;

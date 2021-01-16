@@ -8,9 +8,6 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.offsec.nethunter.AppNavHomeActivity;
-import com.offsec.nethunter.BuildConfig;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -86,7 +83,7 @@ public class ShellExecuter {
 
     public String RunAsRootWithException(String command) throws RuntimeException {
         try {
-            String output = "";
+            StringBuilder output = new StringBuilder();
             String line;
             Process process = Runtime.getRuntime().exec("su -mm");
             OutputStream stdin = process.getOutputStream();
@@ -100,10 +97,10 @@ public class ShellExecuter {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
             while ((line = br.readLine()) != null) {
-                output = output + line + '\n';
+                output.append(line).append('\n');
             }
             /* remove the last \n */
-            if (output.length() > 0) output = output.substring(0,output.length()-1);
+            if (output.length() > 0) output = new StringBuilder(output.substring(0, output.length() - 1));
 
             br.close();
             // Lint says while does not loop here (probably because it doesn't do anything except shell error)
@@ -116,7 +113,7 @@ public class ShellExecuter {
 
             process.waitFor();
             process.destroy();
-            return output;
+            return output.toString();
 
         } catch (Exception ex) {
             throw new RuntimeException(ex);
@@ -124,7 +121,7 @@ public class ShellExecuter {
     }
 
     public String RunAsRootOutput(String command) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         String line;
         try {
             Process process = Runtime.getRuntime().exec("su -mm");
@@ -139,10 +136,10 @@ public class ShellExecuter {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
             while ((line = br.readLine()) != null) {
-                output = output + line + '\n';
+                output.append(line).append('\n');
             }
             /* remove the last \n */
-            if (output.length() > 0) output = output.substring(0,output.length()-1);
+            if (output.length() > 0) output = new StringBuilder(output.substring(0, output.length() - 1));
             br.close();
             br = new BufferedReader(new InputStreamReader(stderr));
             while ((line = br.readLine()) != null) {
@@ -156,7 +153,7 @@ public class ShellExecuter {
         } catch (InterruptedException ex) {
             Log.d(TAG, "An InterruptedException was caught: " + ex.getMessage());
         }
-        return output;
+        return output.toString();
     }
 
     public int RunAsRootOutput(String command, final TextView viewLogger) {
@@ -221,7 +218,7 @@ public class ShellExecuter {
     }
 
     public String RunAsChrootOutput(String command) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         String line;
         try {
             Process process = Runtime.getRuntime().exec("su -mm");
@@ -236,10 +233,10 @@ public class ShellExecuter {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
             while ((line = br.readLine()) != null) {
-                output = output + line + '\n';
+                output.append(line).append('\n');
             }
             /* remove the last \n */
-            if (output.length() > 0) output = output.substring(0,output.length()-1);
+            if (output.length() > 0) output = new StringBuilder(output.substring(0, output.length() - 1));
             br.close();
             br = new BufferedReader(new InputStreamReader(stderr));
             while ((line = br.readLine()) != null) {
@@ -253,7 +250,7 @@ public class ShellExecuter {
         } catch (InterruptedException ex) {
             Log.d(TAG, "An InterruptedException was caught: " + ex.getMessage());
         }
-        return output;
+        return output.toString();
     }
 
     public int RunAsChrootReturnValue(String command) {
@@ -282,19 +279,19 @@ public class ShellExecuter {
     public void ReadFile_ASYNC(String _path, final EditText v) {
         final String command = "cat " + _path;
         new Thread(() -> {
-            String output = "";
+            StringBuilder output = new StringBuilder();
             try {
                 Process  p = Runtime.getRuntime().exec("su -mm -c " + command);
                 p.waitFor();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    output = output +  line + "\n";
+                    output.append(line).append("\n");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            final String _output = output;
+            final String _output = output.toString();
             v.post(() -> v.setText(_output));
         }).start();
     }

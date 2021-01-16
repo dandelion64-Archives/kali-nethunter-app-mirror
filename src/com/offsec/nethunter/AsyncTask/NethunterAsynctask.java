@@ -2,7 +2,6 @@ package com.offsec.nethunter.AsyncTask;
 
 import android.os.AsyncTask;
 
-import com.offsec.nethunter.RecyclerViewData.NethunterData;
 import com.offsec.nethunter.SQL.NethunterSQL;
 import com.offsec.nethunter.models.NethunterModel;
 import com.offsec.nethunter.utils.ShellExecuter;
@@ -31,8 +30,6 @@ public class NethunterAsynctask extends AsyncTask<List<NethunterModel>, Void, Li
     public static final int BACKUPDATA = 6;
     public static final int RESTOREDATA = 7;
     public static final int RESETDATA = 8;
-
-    private List<NethunterModel> nethunterModelList;
 
     public NethunterAsynctask (int actionCode){
         this.actionCode = actionCode;
@@ -81,7 +78,7 @@ public class NethunterAsynctask extends AsyncTask<List<NethunterModel>, Void, Li
     protected List<NethunterModel> doInBackground(List<NethunterModel>... copyOfnethunterModelList) {
         switch (actionCode) {
             case GETITEMRESULTS:
-                nethunterModelList = copyOfnethunterModelList[0];
+                List<NethunterModel> nethunterModelList = copyOfnethunterModelList[0];
                 if (nethunterModelList != null){
                     for (int i = 0; i < nethunterModelList.size(); i++){
                         nethunterModelList.get(i).setResult(nethunterModelList.get(i).getRunOnCreate().equals("1")?new ShellExecuter().RunAsRootOutput(nethunterModelList.get(i).getCommand()).split("\\n"):"Please click RUN button manually.".split("\\n"));
@@ -158,7 +155,7 @@ public class NethunterAsynctask extends AsyncTask<List<NethunterModel>, Void, Li
                 nethunterModelList = copyOfnethunterModelList[0];
                 if (nethunterModelList != null) {
                     nethunterModelList.clear();
-                    nethunterModelList = nethunterSQL.bindData((ArrayList<NethunterModel>)nethunterModelList);
+                    nethunterModelList = nethunterSQL.bindData((ArrayList<NethunterModel>) nethunterModelList);
                 }
                 break;
             case RESETDATA:
