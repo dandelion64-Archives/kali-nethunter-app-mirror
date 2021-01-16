@@ -94,6 +94,7 @@ public class ManaFragment extends Fragment {
     }
 
 
+    @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         int pageNum = mViewPager.getCurrentItem();
         menu.findItem(R.id.source_button).setVisible(pageNum == 0);

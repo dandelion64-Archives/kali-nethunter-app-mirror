@@ -76,7 +76,7 @@ public class AppNavHomeActivity extends AppCompatActivity implements KaliGPSUpda
     private NhPaths nhPaths;
     private PermissionCheck permissionCheck;
     private BroadcastReceiver nethunterReceiver;
-    public static Boolean isBackPressEnabled = true;
+    public static boolean isBackPressEnabled = true;
     private int desiredFragment = -1;
 
     @Override
