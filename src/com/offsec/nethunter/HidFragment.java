@@ -378,15 +378,15 @@ public class HidFragment extends Fragment {
                 String[] lines = text.split("\n");
                 final String line = lines[lines.length - 1];
 
-                String regExPatIp = "-Lhost\\ (.*)\\ -Lport";
+                String regExPatIp = "-Lhost (.*) -Lport";
                 Pattern patternIp = Pattern.compile(regExPatIp, Pattern.MULTILINE);
                 final Matcher matcherIp = patternIp.matcher(line);
 
-                String regExPatPort = "-Lport\\ (.*)\\ -Force";
+                String regExPatPort = "-Lport (.*) -Force";
                 Pattern patternPort = Pattern.compile(regExPatPort, Pattern.MULTILINE);
                 final Matcher matcherPort = patternPort.matcher(line);
 
-                String regExPatPayload = "-Payload\\ (.*)\\ -Lhost";
+                String regExPatPayload = "-Payload (.*) -Lhost";
                 Pattern patternPayload = Pattern.compile(regExPatPayload, Pattern.MULTILINE);
                 final Matcher matcherPayload = patternPayload.matcher(line);
 

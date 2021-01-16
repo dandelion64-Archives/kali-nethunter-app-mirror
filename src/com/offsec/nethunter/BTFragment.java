@@ -629,7 +629,7 @@ public class BTFragment extends Fragment {
                     String currentClassTypeCMD = exe.RunAsRootOutput("bootkali custom_cmd hciconfig " + selectedIface + " -a | awk '/Device Class:/ { print $3, $4, $5 }'");
                     currentClassType.setText(currentClassTypeCMD);
 
-                    String currentNameCMD = exe.RunAsRootOutput("bootkali custom_cmd hciconfig " + selectedIface + " -a | grep Name | cut -d\\\' -f2");
+                    String currentNameCMD = exe.RunAsRootOutput("bootkali custom_cmd hciconfig " + selectedIface + " -a | grep Name | cut -d\\' -f2");
                     currentName.setText(currentNameCMD);
                 } else
                     Toast.makeText(getActivity().getApplicationContext(), "Interface is down!", Toast.LENGTH_SHORT).show();

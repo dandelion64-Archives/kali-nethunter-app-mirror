@@ -42,25 +42,15 @@ public class USBArmoryHandlerThread extends HandlerThread {
                 super.handleMessage(msg);
                 switch (msg.what) {
                     case IS_INIT_EXIST:
+                    case SETUSBIFACE:
+                    case MOUNT_IMAGE:
+                    case UNMOUNT_IMAGE:
                         resultObject = exe.RunAsRootReturnValue(msg.obj.toString());
                         break;
                     case RETRIEVE_USB_FUNCS:
-                        resultObject = exe.RunAsRootOutput(msg.obj.toString());
-                        break;
-                    case SETUSBIFACE:
-                        resultObject = exe.RunAsRootReturnValue(msg.obj.toString());
-                        break;
                     case RELOAD_USBIFACE:
-                        resultObject = exe.RunAsRootOutput(msg.obj.toString());
-                        break;
                     case RELOAD_MOUNTSTATUS:
                         resultObject = exe.RunAsRootOutput(msg.obj.toString());
-                        break;
-                    case MOUNT_IMAGE:
-                        resultObject = exe.RunAsRootReturnValue(msg.obj.toString());
-                        break;
-                    case UNMOUNT_IMAGE:
-                        resultObject = exe.RunAsRootReturnValue(msg.obj.toString());
                         break;
                     case GET_USBSWITCH_SQL_DATA:
                         resultObject = USBArmorySQL.getInstance((Context) msg.obj)

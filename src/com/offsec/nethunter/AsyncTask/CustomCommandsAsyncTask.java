@@ -158,7 +158,7 @@ public class CustomCommandsAsyncTask extends AsyncTask<List<CustomCommandsModel>
 			case DELETEDATA:
 				customCommandsModelList = copyOfcustomCommandsModelList[0];
 				if (customCommandsModelList != null){
-					Collections.sort(selectedPositionsIndex, Collections.<Integer>reverseOrder());
+					Collections.sort(selectedPositionsIndex, Collections.reverseOrder());
 					for (Integer selectedPosition: selectedPositionsIndex) {
 						int i = selectedPosition;
 						customCommandsModelList.remove(i);
@@ -186,6 +186,7 @@ public class CustomCommandsAsyncTask extends AsyncTask<List<CustomCommandsModel>
 
 				break;
 			case BACKUPDATA:
+			case RESETDATA:
 				break;
 			case RESTOREDATA:
 				customCommandsModelList = copyOfcustomCommandsModelList[0];
@@ -193,8 +194,6 @@ public class CustomCommandsAsyncTask extends AsyncTask<List<CustomCommandsModel>
 					customCommandsModelList.clear();
 					customCommandsModelList = customCommandsSQL.bindData((ArrayList<CustomCommandsModel>)customCommandsModelList);
 				}
-				break;
-			case RESETDATA:
 				break;
 		}
 		return copyOfcustomCommandsModelList[0];

@@ -134,7 +134,7 @@ public class KaliServicesAsyncTask extends AsyncTask<List<KaliServicesModel>, Vo
 			case DELETEDATA:
 				kaliServicesModelList = copyOfkaliServicesModelList[0];
 				if (kaliServicesModelList != null){
-					Collections.sort(selectedPositionsIndex, Collections.<Integer>reverseOrder());
+					Collections.sort(selectedPositionsIndex, Collections.reverseOrder());
 					for (Integer selectedPosition: selectedPositionsIndex) {
 						int i = selectedPosition;
 						kaliServicesModelList.remove(i);
@@ -162,6 +162,7 @@ public class KaliServicesAsyncTask extends AsyncTask<List<KaliServicesModel>, Vo
 				}
 				break;
 			case BACKUPDATA:
+			case RESETDATA:
 				break;
 			case RESTOREDATA:
 				kaliServicesModelList = copyOfkaliServicesModelList[0];
@@ -169,8 +170,6 @@ public class KaliServicesAsyncTask extends AsyncTask<List<KaliServicesModel>, Vo
 					kaliServicesModelList.clear();
 					kaliServicesModelList = kaliServicesSQL.bindData((ArrayList<KaliServicesModel>)kaliServicesModelList);
 				}
-				break;
-			case RESETDATA:
 				break;
 			case UPDATE_RUNONCHROOTSTART_SCRIPTS:
 				kaliServicesModelList = copyOfkaliServicesModelList[0];

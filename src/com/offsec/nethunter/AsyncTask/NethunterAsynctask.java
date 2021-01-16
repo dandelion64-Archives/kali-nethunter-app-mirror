@@ -123,7 +123,7 @@ public class NethunterAsynctask extends AsyncTask<List<NethunterModel>, Void, Li
             case DELETEDATA:
                 nethunterModelList = copyOfnethunterModelList[0];
                 if (nethunterModelList != null){
-                    Collections.sort(selectedPositionsIndex, Collections.<Integer>reverseOrder());
+                    Collections.sort(selectedPositionsIndex, Collections.reverseOrder());
                     for (Integer selectedPosition: selectedPositionsIndex) {
                         int i = selectedPosition;
                         nethunterModelList.remove(i);
@@ -150,6 +150,7 @@ public class NethunterAsynctask extends AsyncTask<List<NethunterModel>, Void, Li
                 }
                 break;
             case BACKUPDATA:
+            case RESETDATA:
                 break;
             case RESTOREDATA:
                 nethunterModelList = copyOfnethunterModelList[0];
@@ -157,8 +158,6 @@ public class NethunterAsynctask extends AsyncTask<List<NethunterModel>, Void, Li
                     nethunterModelList.clear();
                     nethunterModelList = nethunterSQL.bindData((ArrayList<NethunterModel>) nethunterModelList);
                 }
-                break;
-            case RESETDATA:
                 break;
         }
         return copyOfnethunterModelList[0];

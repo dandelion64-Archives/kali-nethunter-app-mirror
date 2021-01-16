@@ -18,10 +18,10 @@ import java.util.Arrays;
 
 public class ChrootManagerAsynctask extends AsyncTask<Object, Integer, Void> {
     private ChrootManagerAsyncTaskListener listener;
-    private ShellExecuter exe = new ShellExecuter();
-    private int ACTIONCODE;
+    private final ShellExecuter exe = new ShellExecuter();
+    private final int ACTIONCODE;
     private int resultCode;
-    private ArrayList<String> resultString = new ArrayList<>();
+    private final ArrayList<String> resultString = new ArrayList<>();
     public static final int CHECK_CHROOT = 0;
     public static final int MOUNT_CHROOT = 1;
     public static final int UNMOUNT_CHROOT = 2;
