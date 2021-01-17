@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center"
-                android:gravity="left"
+                android:gravity="start"
                 android:text="@string/macchanger_description" />
 
             <LinearLayout
@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:padding="4dp"
-                    android:text="Current Hostname: "
+                    android:text="@string/current_hostname"
                     android:textSize="18sp" />
 
                 <TextView
@@ -68,7 +68,7 @@
                     android:id="@+id/f_macchanger_setHostname_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set Hostname"/>
+                    android:text="@string/set_hostname"/>
             </LinearLayout>
 
             <TextView
@@ -172,7 +172,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:autofillHints="" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -186,7 +187,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:autofillHints="" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -200,7 +202,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:autofillHints="" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -214,7 +217,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:autofillHints="" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -228,7 +232,8 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:autofillHints="" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -242,23 +247,25 @@
                         android:digits="0123456789abcdef"
                         android:hint="@string/TwoMACDigits"
                         android:inputType="textNoSuggestions"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:autofillHints="" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/f_macchanger_regenerate_mac_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GENERATE"
+                    android:text="@string/generate"
+                    style="@android:style/Holo.Light.ButtonBar"
                     android:visibility="gone"/>
 
                 <Button
                     android:id="@+id/f_macchanger_clear_mac_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CLEAR"
+                    android:text="@string/clear"
+                    style="@android:style/Holo.Light.ButtonBar"
                     android:visibility="gone" />
-
             </LinearLayout>
 
             <Button
@@ -273,7 +280,5 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"/>
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
-
 </LinearLayout>

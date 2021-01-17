@@ -2,7 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.offsec.nethunter.MITMFViewModel" />
@@ -22,11 +21,12 @@
 
         <ImageView
             android:layout_gravity="center_horizontal"
-            android:paddingTop="10px"
-            android:paddingBottom="20px"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            app:srcCompat="@android:drawable/divider_horizontal_bright" />
+            app:srcCompat="@android:drawable/divider_horizontal_bright"
+            android:contentDescription="@string/todo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -106,9 +106,7 @@
                     android:enabled="@{viewModel.injectHtmlEnabled}"
                     android:hint="@string/mitmf_inject_HTMLPAY"
                     app:addTextChangedListener="@{viewModel.injectHtmlWatcher}" />
-
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <TextView
                 android:id="@+id/textView"
@@ -131,7 +129,6 @@
                     android:hint="@string/mitmf_inject_RATELIMIT"
                     android:inputType="number"
                     android:enabled="@{viewModel.injectionEnabled}" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -147,9 +144,7 @@
                     android:hint="@string/mitmf_inject_COUNTLIMIT"
                     android:inputType="number"
                     android:enabled="@{viewModel.injectionEnabled}" />
-
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -163,7 +158,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/mitmf_inject_INJECTIP"
                     android:enabled="@{viewModel.injectionEnabled}" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -178,7 +172,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/mitmf_inject_NOINJECTIP"
                     android:enabled="@{viewModel.injectionEnabled}" />
-
             </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     </ScrollView>

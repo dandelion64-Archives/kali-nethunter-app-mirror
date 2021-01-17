@@ -2,7 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.offsec.nethunter.MITMFViewModel" />
@@ -22,17 +21,18 @@
 
         <ImageView
             android:layout_gravity="center_horizontal"
-            android:paddingTop="10px"
-            android:paddingBottom="20px"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            app:srcCompat="@android:drawable/divider_horizontal_bright" />
+            app:srcCompat="@android:drawable/divider_horizontal_bright"
+            android:contentDescription="@string/todo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Spoof Settings" />
+            android:text="@string/spoof_settings" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -44,15 +44,16 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5px"
-            android:paddingTop="10px"
-            app:srcCompat="@android:drawable/divider_horizontal_bright" />
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp"
+            app:srcCompat="@android:drawable/divider_horizontal_bright"
+            android:contentDescription="@string/todo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Redirect Using:" />
+            android:text="@string/redirect_using" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -64,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ARP Mode:" />
+            android:text="@string/arp_mode" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -84,7 +85,6 @@
                     android:enabled="@{viewModel.spoofEnabled}"
                     android:hint="@string/mitmf_spoof_gateway"
                     android:id="@+id/mitmf_spoof_gateway_text" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +99,6 @@
                     android:enabled="@{viewModel.spoofEnabled}"
                     android:hint="@string/mitmf_spoof_targets"
                     android:id="@+id/mitmf_spoof_targets_text" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
@@ -121,10 +120,7 @@
                     android:enabled="@{viewModel.shellShockEnabled}"
                     android:hint="@string/shellshock_command"
                     android:id="@+id/mitmf_spoof_shellshock_text" />
-
             </com.google.android.material.textfield.TextInputLayout>
-
-
         </LinearLayout>
 </ScrollView>
 </layout>

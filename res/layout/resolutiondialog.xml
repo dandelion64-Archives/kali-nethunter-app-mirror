@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,27 +24,27 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="width"
-                android:inputType="number" />
+                android:hint="@string/resolution_width"
+                android:inputType="number"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/height"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="height"
-                android:inputType="number" />
+                android:hint="@string/resolution_height"
+                android:inputType="number"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/density"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="density"
-                android:inputType="number" />
-
+                android:hint="@string/density"
+                android:inputType="number"
+                android:autofillHints="" />
         </LinearLayout>
-
     </ScrollView>
-
 </LinearLayout>

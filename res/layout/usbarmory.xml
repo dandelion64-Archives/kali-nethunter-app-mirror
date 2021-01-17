@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -48,7 +50,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Target"
+                        android:text="@string/target"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <Spinner
@@ -69,7 +71,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="USB Function"
+                        android:text="@string/usb_function"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <Spinner
@@ -89,7 +91,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="ADB"
+                        android:text="@string/adb"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <Spinner
@@ -108,7 +110,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="idVendor"
+                        android:text="@string/idvendor"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <EditText
@@ -116,7 +118,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
-                        android:layout_weight="0.6"/>
+                        android:layout_weight="0.6"
+                        android:autofillHints=""
+                        tools:ignore="LabelFor,TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,7 +130,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="idProduct"
+                        android:text="@string/idproduct"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <EditText
@@ -135,7 +139,9 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:layout_weight="0.6"
-                        android:hint=""/>
+                        android:hint="@string/todo"
+                        android:autofillHints=""
+                        tools:ignore="TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -145,7 +151,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="manufacturer"
+                        android:text="@string/manufacturer"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <EditText
@@ -154,7 +160,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:layout_weight="0.6"
-                        android:hint=""/>
+                        android:hint="@string/todo"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -164,7 +170,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="product"
+                        android:text="@string/product"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <EditText
@@ -172,7 +178,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
-                        android:layout_weight="0.6"/>
+                        android:layout_weight="0.6"
+                        android:autofillHints=""
+                        tools:ignore="LabelFor,TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -182,7 +190,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="serialnumber"
+                        android:text="@string/serialnumber"
                         android:layout_weight="0.4"
                         android:textSize="18sp" />
                     <EditText
@@ -191,21 +199,21 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:layout_weight="0.6"
-                        android:hint=""/>
+                        android:hint="@string/todo"/>
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/f_usbarmory_btn_setusbinterface"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Set USB Function"
+                    android:text="@string/set_usb_function"
                     style="?android:attr/buttonStyleSmall"/>
                 <Button
                     android:id="@+id/f_usbarmory_btn_saveusbfuncswitch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
-                    android:text="SAVE CONFIG TO DATABASE"/>
+                    android:text="@string/save_config_db"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -236,7 +244,8 @@
                         android:baselineAlignBottom="false"
                         android:cropToPadding="false"
                         android:layout_weight="0.2"
-                        android:src="@drawable/ic_action_refresh" />
+                        app:srcCompat="@drawable/ic_action_refresh"
+                        android:contentDescription="@string/todo" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -294,7 +303,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Select an .img or .iso file to mount"
+                    android:text="@string/select_image"
                     android:textSize="16sp"
                     android:textStyle="bold" />
                 <Spinner
@@ -312,19 +321,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.3"
-                        android:text="Mount Image" />
+                        android:text="@string/mount_image" />
                     <Button
                         android:id="@+id/f_usbarmory_btn_unmountImage"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.3"
-                        android:text="Unmount Image" />
+                        android:text="@string/unmount_image" />
                     <CheckBox
                         android:id="@+id/f_usbarmory_chkbox_ReadOrWrite"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Read Only"
+                        android:text="@string/read_only"
                         android:layout_weight="0.4"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp" />
@@ -342,14 +351,14 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Mounted Image:"
+                            android:text="@string/mounted_image"
                             android:textSize="18sp" />
                         <TextView
                             android:id="@+id/f_usbarmory_tv_mount_state"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
-                            android:text="No image is mounted."/>
+                            android:text="@string/no_image_is_mounted"/>
                     </LinearLayout>
                     <ImageButton
                         android:id="@+id/f_usbarmory_imgbtn_reloadMountStatus"
@@ -359,7 +368,8 @@
                         android:baselineAlignBottom="false"
                         android:cropToPadding="false"
                         android:layout_weight="0.2"
-                        android:src="@drawable/ic_action_refresh" />
+                        app:srcCompat="@drawable/ic_action_refresh"
+                        android:contentDescription="@string/todo" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -418,7 +428,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
-                        android:text="Attack Mode:"
+                        android:text="@string/attack_mode"
                         android:textSize="18sp" />
                     <Spinner
                         android:id="@+id/f_usbarmory_spr_networkattackmode"
@@ -428,7 +438,6 @@
                         android:textSize="18sp"
                         android:layout_weight="0.6"
                         android:entries="@array/usbarmory_usb_network_attack_mode"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -439,14 +448,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
-                        android:text="Upstream Interface\n(e.g. wlan0, rmnet_data0):"
+                        android:text="@string/upstream_interface"
                         android:textSize="18sp" />
                     <EditText
                         android:id="@+id/f_usbarmory_et_usbnetwork_upstreamiface"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:autofillHints=""
+                        tools:ignore="LabelFor,TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -458,7 +469,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
-                        android:text="USB network interface\n(e.g. rndis0, usb0):"
+                        android:text="@string/network_interface"
                         android:textSize="18sp" />
 
                     <EditText
@@ -466,7 +477,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:autofillHints=""
+                        tools:ignore="LabelFor,TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -478,7 +491,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
-                        android:text="IP address to be assigned for target:"
+                        android:text="@string/target_ip_address"
                         android:textSize="18sp" />
 
                     <EditText
@@ -486,7 +499,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:autofillHints=""
+                        tools:ignore="LabelFor,TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -497,15 +512,17 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="IP address for your USB Network Interface:"
+                        android:text="@string/ip_address"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/f_usbarmory_et_usbnetwork_gatewayip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint=""
-                        android:textSize="18sp" />
+                        android:hint="@string/todo"
+                        android:textSize="18sp"
+                        android:autofillHints=""
+                        tools:ignore="TextFields" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -516,28 +533,29 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="IP Subnet Mask (in Octet format):"
+                        android:text="@string/subnet_mask"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/f_usbarmory_et_usbnetwork_ipsubnetmask"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint=""
-                        android:textSize="18sp" />
+                        android:hint="@string/todo"
+                        android:textSize="18sp"
+                        android:autofillHints=""
+                        tools:ignore="TextFields" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/f_usbarmory_btn_runusbnetworktethering"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RUN IN NETHUNTER TERMINAL"/>
+                    android:text="@string/run_in_nhterm"/>
                 <Button
                     android:id="@+id/f_usbarmory_btn_saveusbnetworktethering"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SAVE CONFIG TO DATABASE"/>
-
+                    android:text="@string/save_config_db"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

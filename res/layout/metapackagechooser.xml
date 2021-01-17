@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -15,7 +15,7 @@
             android:text="@string/metapackagesExplanation"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
@@ -26,21 +26,21 @@
                 android:checked="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-linux-nethunter" />
+                android:text="@string/kali_linux_nethunter" />
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-tools-top10" />
+                android:text="@string/kali_tools_top10" />
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-linux-default" />
+                android:text="@string/kali_linux_default" />
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-linux-large" />
+                android:text="@string/kali_linux_large" />
 
             <CheckBox
                 android:layout_width="match_parent"
@@ -145,22 +145,22 @@
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-tools-vulnerability" />
+                android:text="@string/kali_tools_vulnerability" />
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-tools-web" />
+                android:text="@string/kali_tools_web" />
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-tools-windows-resources" />
+                android:text="@string/kali_tools_windows_resources" />
 
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kali-tools-wireless" />
+                android:text="@string/kali_tools_wireless" />
         </LinearLayout>
 
         <TextView
@@ -177,8 +177,8 @@
             android:id="@+id/metapackagesWeb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Open kali-metapackages WebSite"
+            android:text="@string/open_kali_metapackages_website"
+            style="@android:style/Holo.Light.ButtonBar"
             android:layout_gravity="center_horizontal" />
-
     </LinearLayout>
 </ScrollView>

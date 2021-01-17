@@ -1,11 +1,13 @@
-<LinearLayout android:layout_width="fill_parent"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -43,7 +45,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:paddingTop="10dp"
-                    android:text="SCREEN SIZE:"
+                    android:text="@string/screen_size"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <TextView
@@ -55,8 +57,6 @@
                     android:layout_marginEnd="20dp"
                     android:paddingTop="10dp"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -73,7 +73,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:paddingTop="15dp"
-                    android:text="SELECT ANIMATION:"
+                    android:text="@string/select_animation"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Spinner
@@ -85,7 +85,6 @@
                     android:layout_marginEnd="5dp"
                     android:dropDownWidth="match_parent"
                     android:saveEnabled="false" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -101,7 +100,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:text="Convert"
+                    android:text="@string/convert"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <CheckBox
@@ -111,9 +110,8 @@
                     android:layout_weight="1"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:text="Preview"
+                    android:text="@string/preview"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -127,9 +125,7 @@
                 <VideoView
                     android:id="@+id/videoView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -146,7 +142,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:paddingTop="10dp"
-                    android:text="IMAGE RESOLUTION:"
+                    android:text="@string/image_resolution"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
@@ -156,8 +152,10 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:text="1080"
-                    android:textColor="#40FFFFFF" />
+                    android:text="@string/_1080"
+                    android:textColor="#40FFFFFF"
+                    android:autofillHints=""
+                    tools:ignore="LabelFor" />
 
                 <EditText
                     android:id="@+id/image_height"
@@ -166,9 +164,10 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:text="1920"
-                    android:textColor="#40FFFFFF" />
-
+                    android:text="@string/_1920"
+                    android:textColor="#40FFFFFF"
+                    android:autofillHints=""
+                    tools:ignore="LabelFor" />
             </LinearLayout>
 
             <LinearLayout
@@ -185,7 +184,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:paddingTop="10dp"
-                    android:text="FINAL RESOLUTION:"
+                    android:text="@string/final_resolution"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
@@ -195,7 +194,9 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:text="1080" />
+                    android:text="@string/_1080"
+                    android:autofillHints=""
+                    tools:ignore="LabelFor" />
 
                 <EditText
                     android:id="@+id/final_height"
@@ -204,8 +205,9 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:text="1920" />
-
+                    android:text="@string/_1920"
+                    android:autofillHints=""
+                    tools:ignore="LabelFor" />
             </LinearLayout>
 
             <LinearLayout
@@ -222,7 +224,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:paddingTop="10dp"
-                    android:text="FRAME RATE:"
+                    android:text="@string/frame_rate"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
@@ -232,7 +234,9 @@
                     android:layout_weight="2"
                     android:ems="10"
                     android:inputType="number"
-                    android:text="30" />
+                    android:text="@string/thirty"
+                    android:autofillHints=""
+                    tools:ignore="LabelFor" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -240,9 +244,8 @@
                     android:layout_width="match_parent"
                     android:layout_weight="4"
                     android:paddingTop="10dp"
-                    android:text="FPS"
+                    android:text="@string/fps"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -259,7 +262,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:paddingTop="10dp"
-                    android:text="PATH:"
+                    android:text="@string/path"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
@@ -268,8 +271,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="80"
-                    android:hint="Detecting..." />
-
+                    android:hint="@string/detecting"
+                    android:autofillHints=""
+                    tools:ignore="TextFields" />
             </LinearLayout>
 
             <Button
@@ -277,7 +281,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Make bootanimation"
+                android:text="@string/make_bootanimation"
+                style="@android:style/Holo.Light.ButtonBar"
                 android:textColor="#ffffffff" />
 
             <Button
@@ -285,7 +290,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Install bootanimation"
+                android:text="@string/install_bootanimation"
+                style="@android:style/Holo.Light.ButtonBar"
                 android:textColor="#ffffffff" />
 
           <View
@@ -297,7 +303,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="BACKUP OR RESTORE NETHUNTER FILES"
+              android:text="@string/backup_restore"
               android:paddingTop="10dp"
               android:padding="4dp" />
 
@@ -305,7 +311,8 @@
               android:id="@+id/backup"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Backup"
+              android:text="@string/backup"
+              style="@android:style/Holo.Light.ButtonBar"
               android:textColor="#ffffffff" />
 
             <View
@@ -325,24 +332,24 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:layout_weight="1"
-                  android:hint="/sdcard/nh_files_20201010.tar"
-                  android:inputType="text" />
+                  android:hint="@string/sdcard_nh_files_20201010_tar"
+                  android:inputType="text"
+                  android:autofillHints="" />
 
               <Button
                   android:id="@+id/restorefilebrowse"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:layout_weight="5"
-                  android:text="..."
+                  android:text="@string/dotdotdot"
                   android:textColor="#ffffffff" />
-
           </LinearLayout>
 
             <Button
               android:id="@+id/restore"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Restore"
+              android:text="@string/restore"
               android:textColor="#ffffffff" />
 
             <View
@@ -354,7 +361,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="REMOVE NETHUNTER SYSTEM APP"
+                android:text="@string/remove_system_app"
                 android:paddingTop="10dp"
                 android:padding="4dp" />
 
@@ -364,11 +371,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:paddingBottom="10dp"
-                android:text="Uninstall NetHunter App"
+                android:text="@string/uninstall_nethunter"
                 android:textColor="#ffffffff" />
-
       </LinearLayout>
-
   </ScrollView>
-
 </LinearLayout>

@@ -2,7 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.offsec.nethunter.MITMFViewModel" />
@@ -32,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Interface" />
+                android:text="@string/mitm_interface" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -44,15 +43,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="General Settings"
+                android:text="@string/general_settings"
                 android:id="@+id/textView17" />
 
             <ImageView
-                android:paddingTop="10px"
-                android:paddingBottom="5px"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                android:contentDescription="@string/todo" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SMB trap"
+                android:text="@string/smb_trap"
                 android:id="@+id/mitmf_smb_trap"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp" />
@@ -129,24 +129,26 @@
 
             <ImageView
                 android:layout_gravity="center_horizontal"
-                android:paddingTop="10px"
-                android:paddingBottom="5px"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="ScreenShotter" />
+                android:text="@string/screenshotter" />
 
             <ImageView
-                android:paddingTop="10px"
-                android:paddingBottom="5px"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                android:contentDescription="@string/todo" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -174,18 +176,18 @@
                     android:inputType="number"
                     android:ems="10"
                     android:id="@+id/mitmf_screen_interval"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:autofillHints="" />
                 <!--android:enabled="@{mitmfScreenshotter.checked}"-->
             </LinearLayout>
 
             <ImageView
-                android:paddingTop="10px"
-                android:paddingBottom="5px"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
-
+                app:srcCompat="@android:drawable/divider_horizontal_bright"
+                android:contentDescription="@string/todo" />
     </LinearLayout>
-
 </ScrollView>
 </layout>

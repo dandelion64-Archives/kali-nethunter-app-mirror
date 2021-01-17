@@ -2,7 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.offsec.nethunter.MITMFViewModel" />
@@ -30,8 +29,8 @@
 
         <ImageView
             android:layout_gravity="center_horizontal"
-            android:paddingTop="10px"
-            android:paddingBottom="20px"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             app:srcCompat="@android:drawable/divider_horizontal_bright" />
@@ -40,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Responder Settings" />
+            android:text="@string/responder_settings" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -91,7 +90,6 @@
             android:text="@string/mitmf_Responder_Wredir"
             android:id="@+id/mitmf_responder_WREDIR"
             android:enabled="@{viewModel.responderChecked}" />
-
     </LinearLayout>
 </ScrollView>
 </layout>

@@ -78,4 +78,7 @@ public class EditSourceActivity extends AppCompatActivity {
             NhPaths.showMessage(activity,"Source not updated");
         }
     }
+
+    public void updatewhitelist(View view) {
+    }
 }

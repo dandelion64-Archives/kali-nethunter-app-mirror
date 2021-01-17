@@ -1,4 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -24,12 +25,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Duckyscripts" />
+            android:text="@string/duckyscripts" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Place your own duckyscripts at /sdcard/nh_files/duckyscripts/"
+            android:text="@string/place_your_own_duckyscripts_at_sdcard_nh_files_duckyscripts"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="12sp" />
 
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Preview" />
+            android:text="@string/preview" />
 
         <EditText
             android:id="@+id/editSource"
@@ -51,7 +52,9 @@
             android:includeFontPadding="false"
             android:inputType="textMultiLine"
             android:layout_marginLeft="1dip"
-            android:layout_marginRight="1dip" />
+            android:layout_marginRight="1dip"
+            android:autofillHints=""
+            tools:ignore="LabelFor" />
 
         <LinearLayout
             android:orientation="horizontal"

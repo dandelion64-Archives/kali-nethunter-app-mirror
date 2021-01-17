@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -24,7 +26,7 @@
                 android:layout_marginStart="4dp"
                 android:textSize="18sp"
                 android:textColor="@color/accent_material_dark"
-                android:text="Title:"/>
+                android:text="@string/title"/>
 
             <EditText
                 android:id="@+id/f_kaliservices_add_adb_et_title"
@@ -32,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:inputType="text"
-                android:hint="Enter your title name here"/>
+                android:hint="@string/enter_your_title_name_here"
+                android:autofillHints="" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,26 +49,29 @@
                     android:layout_weight="0.9"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
-                    android:text="Command for starting the service:"/>
+                    android:text="@string/command_for_starting_the_service"/>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/f_kaliservices_add_btn_info_fab1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_action_information"
+                    app:srcCompat="@drawable/ic_action_information"
                     android:textSize="12sp"
                     android:layout_marginEnd="8dp"
                     app:elevation="6dp"
                     app:fabCustomSize="32dp"
-                    app:pressedTranslationZ="12dp" />
+                    app:pressedTranslationZ="12dp"
+                    android:contentDescription="@string/todo" />
             </LinearLayout>
 
             <EditText
                 android:id="@+id/f_kaliservices_add_adb_et_startcommand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"/>
+                android:layout_marginStart="4dp"
+                android:autofillHints=""
+                tools:ignore="LabelFor,TextFields" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,25 +84,29 @@
                     android:layout_weight="0.9"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
-                    android:text="Command for stopping the service:"/>
+                    android:text="@string/command_for_stopping_the_service"/>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/f_kaliservices_add_btn_info_fab2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_action_information"
+                    app:srcCompat="@drawable/ic_action_information"
                     android:textSize="12sp"
                     android:layout_marginEnd="8dp"
                     app:elevation="6dp"
                     app:fabCustomSize="32dp"
-                    app:pressedTranslationZ="12dp" />
+                    app:pressedTranslationZ="12dp"
+                    android:contentDescription="@string/todo" />
             </LinearLayout>
+
             <EditText
                 android:id="@+id/f_kaliservices_add_adb_et_stopcommand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp" />
+                android:layout_marginStart="4dp"
+                android:autofillHints=""
+                tools:ignore="LabelFor,TextFields" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,27 +120,29 @@
                     android:layout_weight="0.9"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
-                    android:text="String for checking the service:"/>
+                    android:text="@string/string_for_checking_the_service"/>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/f_kaliservices_add_btn_info_fab3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.1"
-                    android:src="@drawable/ic_action_information"
+                    app:srcCompat="@drawable/ic_action_information"
                     android:textSize="12sp"
                     android:layout_marginEnd="8dp"
                     app:elevation="6dp"
                     app:fabCustomSize="32dp"
-                    app:pressedTranslationZ="12dp" />
+                    app:pressedTranslationZ="12dp"
+                    android:contentDescription="@string/todo" />
             </LinearLayout>
-
 
             <EditText
                 android:id="@+id/f_kaliservices_add_adb_et_checkstatuscommand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"/>
+                android:layout_marginStart="4dp"
+                android:autofillHints=""
+                tools:ignore="LabelFor,TextFields" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -141,23 +153,23 @@
                     android:id="@+id/f_kaliservices_add_adb_checkbox_runonboot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RunOnChrootStart"
+                    android:text="@string/runonchrootstart"
                     android:textSize="18sp"
                     android:textColor="@color/accent_material_dark"
                     android:layout_marginStart="4dp"/>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/f_kaliservices_add_btn_info_fab4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_information"
+                    app:srcCompat="@drawable/ic_action_information"
                     android:layout_marginStart="8dp"
                     android:textSize="12sp"
                     app:elevation="6dp"
                     app:fabCustomSize="32dp"
-                    app:pressedTranslationZ="12dp" />
+                    app:pressedTranslationZ="12dp"
+                    android:contentDescription="@string/todo" />
             </LinearLayout>
-
 
             <TextView
                 android:layout_width="match_parent"
@@ -165,7 +177,7 @@
                 android:layout_marginStart="4dp"
                 android:textSize="18sp"
                 android:textColor="@color/accent_material_dark"
-                android:text="Position to insert:">
+                android:text="@string/position_to_insert">
 
             </TextView>
             <LinearLayout
@@ -189,5 +201,4 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </LinearLayout>

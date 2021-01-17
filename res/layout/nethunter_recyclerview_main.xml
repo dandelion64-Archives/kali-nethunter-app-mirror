@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:textColor="@color/cardview_light_background"
-            android:text="Loading"
+            android:text="@string/loading"
             android:textSize="20sp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:text="RUN"
+            android:text="@string/run"
             android:layout_gravity="bottom"
             android:textColor="@color/accent_material_dark" />
     </LinearLayout>

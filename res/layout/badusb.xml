@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
@@ -34,13 +35,16 @@
             android:id="@+id/ifc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"/>
+            android:ems="10"
+            android:autofillHints=""
+            tools:ignore="LabelFor,TextFields" />
 
         <Button
             android:id="@+id/updateOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="updateOptions"
+            style="@android:style/Holo.Light.ButtonBar"
             android:text="@string/update" />
 
     </LinearLayout>
