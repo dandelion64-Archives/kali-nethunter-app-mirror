@@ -7,135 +7,96 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            style="@style/TextAppearance.Compat.Notification"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:text="@string/gps_notification_lat" />
 
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gps_notification_lat" />
+        <TextView
+            style="@style/TextAppearance.Compat.Notification"
+            android:id="@+id/gps_notification_latitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:id="@+id/gps_notification_latitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+    <TextView
+        style="@style/TextAppearance.Compat.Notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gps_notification_long" />
 
-        </LinearLayout>
+    <TextView
+        style="@style/TextAppearance.Compat.Notification"
+        android:id="@+id/gps_notification_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.2"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.Compat.Notification"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:text="@string/gps_notification_accuracy" />
 
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gps_notification_long" />
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:id="@+id/gps_notification_longitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.2"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gps_notification_accuracy" />
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:id="@+id/gps_notification_accuracy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
+        <TextView
+            style="@style/TextAppearance.Compat.Notification"
+            android:id="@+id/gps_notification_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            style="@style/TextAppearance.Compat.Notification"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:text="@string/gps_notification_source" />
 
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gps_notification_source" />
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:id="@+id/gps_notification_source"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            style="@style/TextAppearance.Compat.Notification"
+            android:id="@+id/gps_notification_source"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gps_notification_age" />
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:id="@+id/gps_notification_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.2"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gps_notification_sats" />
-
-            <TextView
-                style="@style/TextAppearance.Compat.Notification"
-                android:id="@+id/gps_notification_sats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
+            android:layout_weight="1" />
     </LinearLayout>
 
+    <TextView
+        style="@style/TextAppearance.Compat.Notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gps_notification_age" />
+
+    <TextView
+        style="@style/TextAppearance.Compat.Notification"
+        android:id="@+id/gps_notification_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        style="@style/TextAppearance.Compat.Notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gps_notification_sats" />
+
+    <TextView
+        style="@style/TextAppearance.Compat.Notification"
+        android:id="@+id/gps_notification_sats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 </LinearLayout>

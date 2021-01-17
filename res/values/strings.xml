@@ -421,7 +421,6 @@
         <item>KALI</item>
         <item>ANDROID</item>
     </string-array>
-    <string name="cancel">Cancel</string>
     <string name="extract_chroot">Decompressing and deploying the Chroot… (~5–10 min)</string>
 
     <!-- Start NMAP -->
@@ -466,7 +465,6 @@
     </string-array>
     <string name="nmap_udpscan">UDP Scan</string>
     <!-- End NMAP -->
-
 
     <!-- Start PineappleFragment -->
     <string name="pineapple_description">The pineapple connector is used in conjunction with the Hak5 Pineapple Nano and a USB OTG cable.   This helper will connect the Pineapple Nano over ethernet and upstream your wifi connection.</string>
@@ -569,4 +567,16 @@
     <string name="exec_mode">Exec mode:</string>
     <string name="run_at_boot">Run at boot:</string>
     <string name="deauth_wlan1">wlan1</string>
+    <string name="launch_kismet">Launch Kismet in NH Terminal</string>
+    <string name="db_save">Full path to where you want to save the database:</string>
+    <string name="db_file_path">Full path of the db file from where you want to restore:</string>
+    <string name="service_start"><![CDATA[service <servicename> start]]></string>
+    <string name="service_stop"><![CDATA[service <servicename> stop]]></string>
+    <string name="servicename"><![CDATA[<servicename>]]></string>
+    <string name="positioning_text">You are moving the item to the same position, nothing to be moved.</string>
+    <string name="moved_item">Successfully moved item.</string>
+    <string name="cancel">Cancel</string>
+    <string name="move">Move</string>
+    <string name="path_db_file">Full path of the db file from where you want to restore:</string>
+    <string name="service_name"><![CDATA[<servicename>]]></string>
 </resources>

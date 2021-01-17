@@ -77,8 +77,8 @@ public class KaliGpsServiceFragment extends Fragment implements KaliGPSUpdates.R
         switch_gps_provider = view.findViewById(R.id.switch_gps_provider);
         switch_gpsd = view.findViewById(R.id.switch_gpsd);
         Button button_launch_app = view.findViewById(R.id.gps_button_launch_app);
-        // TODO: make this text dynamic so we can launch other apps besides Kismet
-        button_launch_app.setText("Launch Kismet in NH Terminal");
+        /* TODO: make this text dynamic so we can launch other apps besides Kismet */
+        button_launch_app.setText(R.string.launch_kismet);
         if(!wantHelpView)
             gpsHelpView.setVisibility(View.GONE);
         Log.d(TAG, "reattachedToRunningService: " + reattachedToRunningService);
@@ -251,4 +251,3 @@ public class KaliGpsServiceFragment extends Fragment implements KaliGPSUpdates.R
         }
     }
 }
-

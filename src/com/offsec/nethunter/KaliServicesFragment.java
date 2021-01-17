@@ -18,6 +18,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.offsec.nethunter.RecyclerViewAdapter.KaliServicesRecyclerViewAdapter;
 import com.offsec.nethunter.RecyclerViewAdapter.KaliServicesRecyclerViewAdapterDeleteItems;
@@ -29,15 +38,6 @@ import com.offsec.nethunter.viewmodels.KaliServicesViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.SearchView;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class KaliServicesFragment extends Fragment {
     private static final String TAG = "KaliServicesFragment";
@@ -78,7 +78,7 @@ public class KaliServicesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         KaliServicesViewModel kaliServicesViewModel = ViewModelProviders.of(this).get(KaliServicesViewModel.class);
         kaliServicesViewModel.init(context);
-        kaliServicesViewModel.getLiveDataKaliServicesModelList().observe(this, kaliServicesModelList -> kaliServicesRecyclerViewAdapter.notifyDataSetChanged());
+        kaliServicesViewModel.getLiveDataKaliServicesModelList().observe(getViewLifecycleOwner(), kaliServicesModelList -> kaliServicesRecyclerViewAdapter.notifyDataSetChanged());
 
         kaliServicesRecyclerViewAdapter = new KaliServicesRecyclerViewAdapter(context, kaliServicesViewModel.getLiveDataKaliServicesModelList().getValue());
         RecyclerView recyclerViewServiceTitle = view.findViewById(R.id.f_kaliservices_recyclerviewServiceTitle);
@@ -156,8 +156,8 @@ public class KaliServicesFragment extends Fragment {
                 adBackup.show();
                 break;
             case R.id.f_kaliservices_menu_restoreDB:
-                titleTextView.setText("Full path of the db file from where you want to restore:");
-                storedpathEditText.setText(NhPaths.APP_SD_SQLBACKUP_PATH + "/FragmentKaliServices");
+                titleTextView.setText(R.string.path_db_file);
+                                storedpathEditText.setText(String.format("%s/FragmentKaliServices", NhPaths.APP_SD_SQLBACKUP_PATH));
                 AlertDialog.Builder adbRestore = new AlertDialog.Builder(activity);
                 adbRestore.setView(promptView);
                 adbRestore.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
@@ -181,6 +181,8 @@ public class KaliServicesFragment extends Fragment {
             case R.id.f_kaliservices_menu_ResetToDefault:
                 KaliServicesData.getInstance().resetData(KaliServicesSQL.getInstance(context));
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + item.getItemId());
         }
         return super.onOptionsItemSelected(item);
     }
@@ -232,9 +234,9 @@ public class KaliServicesFragment extends Fragment {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, serviceNameArrayList);
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-            startCmdEditText.setText("service <servicename> start");
-            stopCmdEditText.setText("service <servicename> stop");
-            checkstatusCmdEditText.setText("<servicename>");
+            startCmdEditText.setText(R.string.service_start);
+            stopCmdEditText.setText(R.string.service_stop);
+            checkstatusCmdEditText.setText(R.string.service_name);
 
             readmeButton1.setOnClickListener(view -> {
                 AlertDialog.Builder adb = new AlertDialog.Builder(activity);

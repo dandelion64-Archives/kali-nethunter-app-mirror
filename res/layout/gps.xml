@@ -33,29 +33,20 @@
         android:padding="10dp"
         android:text="@string/switch_gpsd" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="15sp" />
+    <Button
+        android:id="@+id/gps_button_launch_app"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/gps_button_launch_app" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/gps_button_launch_app"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/gps_button_launch_app" />
-
-        <ImageButton
-            android:id="@+id/gps_button_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            app:srcCompat="@drawable/ic_action_settings_applications" />
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/gps_button_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_action_settings_applications"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/gps_help"
@@ -81,5 +72,4 @@
             android:padding="16sp"
             android:textColor="@android:color/holo_green_light" />
     </ScrollView>
-
 </LinearLayout>
