@@ -500,7 +500,7 @@
     <string name="channel">Channel</string>
     <string name="whitelist">Whitelist</string>
     <string name="deauthenticate_anyone_besides_me">Deauthenticate anyone besides me</string>
-    <string name="start_deauthentication">Start Deauthentication :)</string>
+    <string name="start_deauthentication">Start Deauthentication</string>
     <string name="objects_to_inject">Objects to Inject</string>
     <string name="inject_characteristics">Inject Characteristics</string>
     <string name="shellshock_command">Shellshock command</string>
@@ -568,4 +568,5 @@
     <string name="send_to">Send to:</string>
     <string name="exec_mode">Exec mode:</string>
     <string name="run_at_boot">Run at boot:</string>
+    <string name="deauth_wlan1">wlan1</string>
 </resources>

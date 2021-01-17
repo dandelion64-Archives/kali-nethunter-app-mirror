@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/deauth_item"
@@ -9,28 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="wlan1"
+        android:text="@string/deauth_wlan1"
         android:ems="10"
         android:id="@+id/wlan_interface"
-        android:hint="@string/type_wlan_interface" />
+        android:hint="@string/type_wlan_interface"
+        android:importantForAutofill="no"
+        android:autofillHints="" />
 
     <Button
         android:text="@string/scan_networks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@android:style/Holo.Light.ButtonBar"
         android:id="@+id/scan_networks" />
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:editable="false"
+        android:layout_height="0dp"
+        android:inputType="none"
         android:id="@+id/TerminalOutputDeAuth"
         android:padding="16sp"
         android:background="@android:color/black"
         android:textColor="@android:color/holo_green_light"
         android:fontFamily="monospace"
         android:layout_weight="1.00"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:enabled="false"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/channel"
@@ -38,7 +45,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/channel"
-        android:inputType="number" />
+        android:inputType="number"
+        android:importantForAutofill="no"
+        android:autofillHints="" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -64,6 +73,6 @@
         android:text="@string/start_deauthentication"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@android:style/Holo.Light.ButtonBar"
         android:id="@+id/StartDeAuth" />
-
 </LinearLayout>
