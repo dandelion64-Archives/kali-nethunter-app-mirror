@@ -539,4 +539,5 @@
     <string name="chroot_running">Kali Chroot is now running!</string>
     <string name="chroot_not_started">Kali Chroot has not yet started!</string>
     <string name="chroot_not_installed">Kali Chroot is not yet installed!</string>
+    <string name="available_chroot_folders">\n List of available folder(s) in\n\"</string>
 </resources>

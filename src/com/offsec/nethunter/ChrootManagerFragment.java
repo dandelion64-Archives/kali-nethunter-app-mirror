@@ -38,13 +38,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static android.app.ProgressDialog.STYLE_HORIZONTAL;
 import static android.content.DialogInterface.BUTTON_POSITIVE;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static com.offsec.nethunter.utils.NhPaths.ARCH_FOLDER;
 
 
 public class ChrootManagerFragment extends Fragment {
-
     public static final String TAG = "ChrootManager";
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String IMAGE_SERVER = "images.kali.org";
@@ -110,7 +111,7 @@ public class ChrootManagerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         resultViewerLoggerTextView.setMovementMethod(new ScrollingMovementMethod());
         kaliFolderTextView.setClickable(true);
-        kaliFolderTextView.setText(sharedPreferences.getString(SharePrefTag.CHROOT_ARCH_SHAREPREF_TAG, NhPaths.ARCH_FOLDER));
+        kaliFolderTextView.setText(sharedPreferences.getString(SharePrefTag.CHROOT_ARCH_SHAREPREF_TAG, ARCH_FOLDER));
         final LinearLayoutCompat kaliViewFolderlinearLayout = view.findViewById(R.id.f_chrootmanager_viewholder);
         kaliViewFolderlinearLayout.setOnClickListener(view1 -> new AlertDialog.Builder(activity)
                 .setMessage(baseChrootPathTextView.getText().toString() +
@@ -168,7 +169,7 @@ public class ChrootManagerFragment extends Fragment {
             chrootPathEditText.setLayoutParams(editTextParams);
             availableChrootPathextview.setLayoutParams(editTextParams);
             availableChrootPathextview.setTextColor(getResources().getColor(R.color.clearTitle));
-            availableChrootPathextview.setText("\n List of available folder(s) in\n\"" + NhPaths.NH_SYSTEM_PATH + "/\":\n\n");
+            availableChrootPathextview.setText(String.format("%s%s/\":\n\n", getString(R.string.available_chroot_folders), NhPaths.NH_SYSTEM_PATH));
             File chrootDir = new File(NhPaths.NH_SYSTEM_PATH);
             int count = 0;
             for (File file : Objects.requireNonNull(chrootDir.listFiles())) {
@@ -189,10 +190,10 @@ public class ChrootManagerFragment extends Fragment {
                 if (chrootPathEditText.getText().toString().matches("^\\.(.*$)|^\\.\\.(.*$)|^/+(.*$)|^.*/+(.*$)|^$")){
                     NhPaths.showMessage(activity, "Invilad Name, please try again.");
                 } else {
-                    NhPaths.ARCH_FOLDER = chrootPathEditText.getText().toString();
-                    kaliFolderTextView.setText(NhPaths.ARCH_FOLDER);
-                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_ARCH_SHAREPREF_TAG, NhPaths.ARCH_FOLDER).commit();
-                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_PATH_SHAREPREF_TAG, NhPaths.CHROOT_PATH()).commit();
+                    ARCH_FOLDER = chrootPathEditText.getText().toString();
+                    kaliFolderTextView.setText(ARCH_FOLDER);
+                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_ARCH_SHAREPREF_TAG, ARCH_FOLDER).apply();
+                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_PATH_SHAREPREF_TAG, NhPaths.CHROOT_PATH()).apply();
                     new ShellExecuter().RunAsRootOutput("ln -sfn " + NhPaths.CHROOT_PATH() + " " + NhPaths.CHROOT_SYMLINK_PATH);
                     compatCheck();
                 }
@@ -423,7 +424,7 @@ public class ChrootManagerFragment extends Fragment {
             public void onAsyncTaskPrepare() {
                 broadcastBackPressedIntent(false);
                 setAllButtonEnable(false);
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                progressDialog.setProgressStyle(STYLE_HORIZONTAL);
                 progressDialog.setTitle("Downloading " + targetDownloadFileName);
                 progressDialog.setMessage("Please do NOT kill the app or clear recent apps..");
                 progressDialog.setProgress(0);
