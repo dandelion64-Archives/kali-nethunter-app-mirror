@@ -533,4 +533,10 @@
 
     <!-- dummy_accessibility_service -->
     <string name="dummy_accessibility_service">dummy_accessibility_service</string>
+    <string name="download_chroot_official_text">DOWNLOAD LATEST KALI CHROOT FROM OFFICIAL IMAGE</string>
+    <string name="restore_local_storage">RESTORE FROM LOCAL STORAGE\n(.TAR.GZ /.TAR.XZ)</string>
+    <string name="chroot_tarball_path">Type the full path of your Kali Chroot tarball file:</string>
+    <string name="chroot_running">Kali Chroot is now running!</string>
+    <string name="chroot_not_started">Kali Chroot has not yet started!</string>
+    <string name="chroot_not_installed">Kali Chroot is not yet installed!</string>
 </resources>

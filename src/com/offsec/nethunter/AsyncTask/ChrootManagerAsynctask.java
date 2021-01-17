@@ -36,7 +36,11 @@ public class ChrootManagerAsynctask extends AsyncTask<Object, Integer, Void> {
         this.ACTIONCODE = ACTIONCODE;
     }
 
+    /**
+     * @ AsyncTask is deprecated
+     */
     @Override
+    @Deprecated
     protected void onPreExecute() {
         super.onPreExecute();
         ChrootManagerFragment.isAsyncTaskRunning = true;
@@ -47,43 +51,34 @@ public class ChrootManagerAsynctask extends AsyncTask<Object, Integer, Void> {
 
     @Override
     protected Void doInBackground(Object... objects) {
-        switch (ACTIONCODE) {
-            case ISSUE_BANNER:
-                exe.RunAsRootOutput("echo \"" + objects[1].toString() + "\"", ((TextView)objects[0]));
-                break;
-            case CHECK_CHROOT:
-                resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"status\" -p " + objects[1].toString(), ((TextView)objects[0]));
-                break;
-            case MOUNT_CHROOT:
-                resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/bootkali_init", ((TextView)objects[0]));
-                exe.RunAsRootOutput("sleep 1 && " + NhPaths.CHROOT_INITD_SCRIPT_PATH, ((TextView)objects[0]));
-                break;
-            case UNMOUNT_CHROOT:
-                resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/killkali", ((TextView)objects[0]));
-                break;
-            case INSTALL_CHROOT:
-                resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"restore " + objects[1] + " " + objects[2] + "\"", ((TextView)objects[0]));
-                break;
-            case REMOVE_CHROOT:
-                resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"remove " + NhPaths.CHROOT_PATH() + "\"", ((TextView)objects[0]));
-                break;
-            case BACKUP_CHROOT:
-                resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"backup " + objects[1].toString() + " " + objects[2].toString() + "\"", ((TextView)objects[0]));
-                break;
-            case FIND_CHROOT:
-                resultString.addAll(Arrays.asList(new ShellExecuter().RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"findchroot\"").split("\\n")));
-                break;
-            case DOWNLOAD_CHROOT:
-                try {
-                    exe.RunAsRootOutput("echo \"[!] The Download has been started...Please wait.\"", ((TextView)objects[0]));
-                    int count;
-                    URL url = new URL("https://" + objects[1].toString() + objects[2].toString());
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    int lengthOfFile = connection.getContentLength();
+        if (ACTIONCODE == ISSUE_BANNER) {
+            exe.RunAsRootOutput("echo \"" + objects[1].toString() + "\"", ((TextView) objects[0]));
+        } else if (ACTIONCODE == CHECK_CHROOT) {
+            resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"status\" -p " + objects[1].toString(), ((TextView) objects[0]));
+        } else if (ACTIONCODE == MOUNT_CHROOT) {
+            resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/bootkali_init", ((TextView) objects[0]));
+            exe.RunAsRootOutput("sleep 1 && " + NhPaths.CHROOT_INITD_SCRIPT_PATH, ((TextView) objects[0]));
+        } else if (ACTIONCODE == UNMOUNT_CHROOT) {
+            resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/killkali", ((TextView) objects[0]));
+        } else if (ACTIONCODE == INSTALL_CHROOT) {
+            resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"restore " + objects[1] + " " + objects[2] + "\"", ((TextView) objects[0]));
+        } else if (ACTIONCODE == REMOVE_CHROOT) {
+            resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"remove " + NhPaths.CHROOT_PATH() + "\"", ((TextView) objects[0]));
+        } else if (ACTIONCODE == BACKUP_CHROOT) {
+            resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"backup " + objects[1].toString() + " " + objects[2].toString() + "\"", ((TextView) objects[0]));
+        } else if (ACTIONCODE == FIND_CHROOT) {
+            resultString.addAll(Arrays.asList(new ShellExecuter().RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"findchroot\"").split("\\n")));
+        } else if (ACTIONCODE == DOWNLOAD_CHROOT) {
+            try {
+                exe.RunAsRootOutput("echo \"[!] The Download has been started...Please wait.\"", ((TextView) objects[0]));
+                int count;
+                URL url = new URL("https://" + objects[1].toString() + objects[2].toString());
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                int lengthOfFile = connection.getContentLength();
 
-                    InputStream input = connection.getInputStream();
-                    BufferedInputStream reader = new BufferedInputStream(input);
-                    BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(objects[3].toString()));
+                InputStream input = connection.getInputStream();
+                BufferedInputStream reader = new BufferedInputStream(input);
+                try (BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(objects[3].toString()))) {
 
                     byte[] data = new byte[1024];
                     long bytes = -1;
@@ -94,22 +89,22 @@ public class ChrootManagerAsynctask extends AsyncTask<Object, Integer, Void> {
                         publishProgress(progress);
                         writer.write(data, 0, count);
                     }
-                    writer.close();
-                    reader.close();
-                    exe.RunAsRootOutput("echo \"[+] Download completed.\"", ((TextView)objects[0]));
-                    resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"checksha512 " +
-                            exe.RunAsRootOutput("ping -c 1 " + objects[1].toString() + " | head -n1 | sed 's/\\(^.*(\\)\\(.*\\)\\().*(.*$\\)/\\2/g'") +
-                            objects[2].toString().replace(".tar.xz","") + ".sha512sum " + objects[3].toString() + "\"", ((TextView)objects[0]));
-                } catch (Exception e) {
-                    exe.RunAsRootOutput("echo \"[-] " + e.getMessage() + "\"", ((TextView)objects[0]));
-                    resultCode = 1;
                 }
-                break;
+                reader.close();
+                exe.RunAsRootOutput("echo \"[+] Download completed.\"", ((TextView) objects[0]));
+                resultCode = exe.RunAsRootOutput(NhPaths.APP_SCRIPTS_PATH + "/chrootmgr -c \"checksha512 " +
+                        exe.RunAsRootOutput("ping -c 1 " + objects[1].toString() + " | head -n1 | sed 's/\\(^.*(\\)\\(.*\\)\\().*(.*$\\)/\\2/g'") +
+                        objects[2].toString().replace(".tar.xz", "") + ".sha512sum " + objects[3].toString() + "\"", ((TextView) objects[0]));
+            } catch (Exception e) {
+                exe.RunAsRootOutput("echo \"[-] " + e.getMessage() + "\"", ((TextView) objects[0]));
+                resultCode = 1;
+            }
         }
         return null;
     }
 
     @Override
+    @Deprecated
     protected void onProgressUpdate(Integer... progress) {
         super.onProgressUpdate(progress);
         if (listener != null) {
@@ -118,6 +113,7 @@ public class ChrootManagerAsynctask extends AsyncTask<Object, Integer, Void> {
     }
 
     @Override
+    @Deprecated
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         if (listener != null) {
@@ -137,6 +133,7 @@ public class ChrootManagerAsynctask extends AsyncTask<Object, Integer, Void> {
     }
 
     @Override
+    @Deprecated
     protected void onCancelled() {
         super.onCancelled();
     }
