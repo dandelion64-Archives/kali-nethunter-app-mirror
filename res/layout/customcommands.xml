@@ -56,22 +56,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@android:style/Holo.Light.ButtonBar"
-                android:text="Add" />
+                android:text="@string/custom_add" />
 
             <Button
                 android:id="@+id/f_customcommands_deleteItemButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@android:style/Holo.Light.ButtonBar"
-                android:text="Delete" />
+                android:text="@string/custom_delete" />
 
             <Button
                 android:id="@+id/f_customcommands_moveItemButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@android:style/Holo.Light.ButtonBar"
-                android:text="Move" />
-
+                android:text="@string/custom_move" />
         </LinearLayout>
     </HorizontalScrollView>
 

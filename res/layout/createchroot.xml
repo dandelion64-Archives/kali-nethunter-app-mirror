@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,39 +23,32 @@
         android:paddingRight="16sp"
         android:paddingBottom="16sp" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/MaintainChrootInTerminal"
+        android:id="@+id/upgradechrootbutton"
         android:paddingLeft="16sp"
         android:paddingRight="16sp"
-        android:gravity="center_horizontal">
+        style="?android:attr/buttonBarButtonStyle" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/MaintainChrootInTerminal"
-            android:id="@+id/upgradechrootbutton"
-            android:paddingLeft="16sp"
-            android:paddingRight="16sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/installkalichrootbutton"
-            android:id="@+id/installButton"
-            android:paddingLeft="16sp"
-            android:paddingRight="16sp" />
-
-    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/installkalichrootbutton"
+        android:id="@+id/installButton"
+        android:paddingLeft="16sp"
+        android:paddingRight="16sp"
+        style="?android:attr/buttonBarButtonStyle" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/statusText"
-        android:paddingLeft="16sp"
-        android:paddingTop="16sp" />
+        android:paddingStart="16sp"
+        android:paddingTop="16sp"
+        tools:ignore="RtlSymmetry" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -71,5 +65,4 @@
             android:textColor="@android:color/holo_green_light"
             android:fontFamily="monospace" />
     </ScrollView>
-
 </LinearLayout>

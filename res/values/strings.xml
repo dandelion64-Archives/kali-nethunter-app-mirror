@@ -511,7 +511,6 @@
     <string name="gps_notification_source">"Source: "</string>
     <string name="gps_notification_age">"Age: "</string>
     <string name="gps_notification_sats">"Sats: "</string>
-
     <!-- End GPSFragment -->
 
     <!--Notification Channel-->
@@ -540,4 +539,33 @@
     <string name="chroot_not_started">Kali Chroot has not yet started!</string>
     <string name="chroot_not_installed">Kali Chroot is not yet installed!</string>
     <string name="available_chroot_folders">\n List of available folder(s) in\n\"</string>
+    <string name="chroot_path">Click EDIT button to change your Kali Chroot Path below.</string>
+    <string name="edit">EDIT</string>
+    <string name="chroot_path2">KaliChrootPath: /data/local/nhsystem/</string>
+    <string name="kali_platform">kali-arm64</string>
+    <string name="chroot_status">Status:</string>
+    <string name="chroot_loading">Loading...</string>
+    <string name="start_kali_chroot">Start Kali Chroot</string>
+    <string name="stop_kali_chroot">Stop Kali Chroot</string>
+    <string name="install_kali_chroot">Install Kali Chroot</string>
+    <string name="add_metapackge">Add Metapackge</string>
+    <string name="backup_kali_chroot">Backup Kali Chroot</string>
+    <string name="remove_kali_chroot">Remove Kali Chroot</string>
+    <string name="chroot_arch">Arch:</string>
+    <string name="choose_install">Min or Full install:</string>
+    <string name="download_path">Path of the folder you want to donwload to:</string>
+    <string name="add_command">Add Command</string>
+    <string name="search_command">search command</string>
+    <string name="button_text">Long press to manage a command, dont forget to backup!. Use double quotes if needed.</string>
+    <string name="commandtag">CommandTag</string>
+    <string name="run">Run</string>
+    <string name="system">system</string>
+    <string name="mode">mode</string>
+    <string name="yes_no">YES/NO</string>
+    <string name="custom_add">Add</string>
+    <string name="custom_delete">Delete</string>
+    <string name="custom_move">Move</string>
+    <string name="send_to">Send to:</string>
+    <string name="exec_mode">Exec mode:</string>
+    <string name="run_at_boot">Run at boot:</string>
 </resources>
