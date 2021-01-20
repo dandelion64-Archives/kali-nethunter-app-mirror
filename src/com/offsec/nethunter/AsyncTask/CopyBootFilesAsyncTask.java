@@ -267,7 +267,7 @@ public class CopyBootFilesAsyncTask extends AsyncTask<String, String, String>{
     // Get a list of files from a directory
     private ArrayList<String> FetchFiles(String folder) {
 
-        ArrayList<String> filenames = new ArrayList<String>();
+        ArrayList<String> filenames = new ArrayList<>();
         File directory = new File(folder);
 
         if (directory.exists()) {

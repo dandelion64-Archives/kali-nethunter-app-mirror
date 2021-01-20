@@ -145,14 +145,14 @@ public class DuckHunterConvertFragment extends Fragment implements View.OnClickL
                 String FilePath = data.getData().getPath();
                 EditText editsource = getView().findViewById(R.id.editSource);
                 try {
-                    String text = "";
+                    StringBuilder text = new StringBuilder();
                     BufferedReader br = new BufferedReader(new FileReader(FilePath));
                     String line;
                     while ((line = br.readLine()) != null) {
-                        text += line + '\n';
+                        text.append(line).append('\n');
                     }
                     br.close();
-                    editsource.setText(text);
+                    editsource.setText(text.toString());
                     NhPaths.showMessage(context, "Script loaded");
                 } catch (Exception e) {
                     NhPaths.showMessage(context, e.getMessage());

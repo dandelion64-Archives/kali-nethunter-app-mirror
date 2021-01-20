@@ -74,8 +74,9 @@ public class NethunterAsynctask extends AsyncTask<List<NethunterModel>, Void, Li
         }
     }
 
+    @SafeVarargs
     @Override
-    protected List<NethunterModel> doInBackground(List<NethunterModel>... copyOfnethunterModelList) {
+    protected final List<NethunterModel> doInBackground(List<NethunterModel>... copyOfnethunterModelList) {
         switch (actionCode) {
             case GETITEMRESULTS:
                 List<NethunterModel> nethunterModelList = copyOfnethunterModelList[0];

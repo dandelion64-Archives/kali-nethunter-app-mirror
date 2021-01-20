@@ -490,9 +490,7 @@ public class VNCFragment extends Fragment {
                     exe.RunAsRoot(new String[]{"su -c 'echo " + add_width + "x" + add_height + ":" + add_density + "ppi >> " + hdmiResFile + "'"});
                     reload();
                 });
-                builder2.setNegativeButton("Back", (dialog2, whichButton) -> {
-                    openResolutionDialog();
-                });
+                builder2.setNegativeButton("Back", (dialog2, whichButton) -> openResolutionDialog());
                 builder2.show();
             } else {
                 exe.RunAsRoot(new String[]{"su -c 'echo " + add_width + "x" + add_height + ":" + add_density + "ppi >> " + hdmiResFile + "'"});

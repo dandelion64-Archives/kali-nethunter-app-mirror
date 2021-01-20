@@ -68,7 +68,7 @@ final class NMEA {
     }
 
     public static List<String> formatGpsGsv(GpsStatus gps) {
-        List<String> gsv = new ArrayList<String>();
+        List<String> gsv = new ArrayList<>();
         int nbr_sat = 0;
         for (GpsSatellite sat : gps.getSatellites())
             nbr_sat++;

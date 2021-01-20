@@ -78,8 +78,9 @@ public class KaliServicesAsyncTask extends AsyncTask<List<KaliServicesModel>, Vo
 		}
 	}
 
-	@Override
-	protected List<KaliServicesModel> doInBackground(List<KaliServicesModel>... copyOfkaliServicesModelList) {
+	@SafeVarargs
+    @Override
+	protected final List<KaliServicesModel> doInBackground(List<KaliServicesModel>... copyOfkaliServicesModelList) {
 		List<KaliServicesModel> kaliServicesModelList;
 		switch (actionCode) {
 			case GETITEMSTATUS:

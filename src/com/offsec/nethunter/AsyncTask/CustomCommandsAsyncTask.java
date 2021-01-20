@@ -91,8 +91,9 @@ public class CustomCommandsAsyncTask extends AsyncTask<List<CustomCommandsModel>
 		}
 	}
 
-	@Override
-	protected List<CustomCommandsModel> doInBackground(List<CustomCommandsModel>... copyOfcustomCommandsModelList) {
+	@SafeVarargs
+    @Override
+	protected final List<CustomCommandsModel> doInBackground(List<CustomCommandsModel>... copyOfcustomCommandsModelList) {
 		List<CustomCommandsModel> customCommandsModelList;
 		switch (actionCode) {
 			case RUNCMD:
