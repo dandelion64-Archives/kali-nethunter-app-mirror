@@ -9,8 +9,8 @@ import androidx.core.app.ActivityCompat;
 
 public class PermissionCheck {
     private static final String TAG = "PermissionCheck";
-    private Activity activity;
-    private Context context;
+    private final Activity activity;
+    private final Context context;
 
     public static final int DEFAULT_PERMISSION_RQCODE = 1;
     public static final int NH_TERM_PERMISSIONS_RQCODE = 2;
@@ -61,11 +61,11 @@ public class PermissionCheck {
         for (String permissions:PERMISSIONS){
             if (ActivityCompat.checkSelfPermission(context, permissions) != PackageManager.PERMISSION_GRANTED){
                 Log.e(TAG, "Permissions are NOT all granted.");
-                return false;
+                return true;
             }
         }
         Log.d(TAG, "All permissions are granted.");
-        return true;
+        return false;
     }
 
 }
