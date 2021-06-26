@@ -56,7 +56,6 @@ import androidx.fragment.app.FragmentManager;
 
 
 public class AppNavHomeActivity extends AppCompatActivity implements KaliGPSUpdates.Provider {
-
     public final static String TAG = "AppNavHomeActivity";
     public static final String CHROOT_INSTALLED_TAG = "CHROOT_INSTALLED_TAG";
     public static final String GPS_BACKGROUND_FRAGMENT_TAG = "BG_FRAGMENT_TAG";
@@ -112,7 +111,6 @@ public class AppNavHomeActivity extends AppCompatActivity implements KaliGPSUpda
 
             @Override
             public void onAsyncTaskFinished(Object result) {
-
                 // Fetch the busybox path again after the busybox_nh is copied.
                 NhPaths.BUSYBOX = NhPaths.getBusyboxPath();
 
@@ -156,7 +154,6 @@ public class AppNavHomeActivity extends AppCompatActivity implements KaliGPSUpda
             desiredFragment = menuFragment;
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -236,7 +233,6 @@ public class AppNavHomeActivity extends AppCompatActivity implements KaliGPSUpda
             if (locationUpdatesRequested) {
                 locationService.requestUpdates(locationUpdateReceiver);
             }
-
         }
 
         public void onServiceDisconnected(ComponentName arg0) {

@@ -35,12 +35,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomCommandsFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private static final String TAG = "CustomCommandsFragment";
+    public static final String TAG = "CustomCommandsFragment";
     private CustomCommandsRecyclerViewAdapter customCommandsRecyclerViewAdapter;
     private Context context;
     private Activity activity;
@@ -48,7 +49,6 @@ public class CustomCommandsFragment extends Fragment {
     private Button deleteButton;
     private Button moveButton;
     private static int targetPositionId;
-
     public CustomCommandsFragment() {
 
     }
@@ -70,7 +70,7 @@ public class CustomCommandsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {//this runs BEFORE the ui is available
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { //this runs BEFORE the ui is available
         return inflater.inflate(R.layout.customcommands, container, false);
     }
 
@@ -79,7 +79,8 @@ public class CustomCommandsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         CustomCommandsViewModel customCommandsViewModel = ViewModelProviders.of(this).get(CustomCommandsViewModel.class);
         customCommandsViewModel.init(context);
-        customCommandsViewModel.getLiveDataCustomCommandsModelList().observe(this, customCommandsModelList -> customCommandsRecyclerViewAdapter.notifyDataSetChanged());
+        customCommandsViewModel.getLiveDataCustomCommandsModelList().observe(getViewLifecycleOwner(),
+                customCommandsModelList -> customCommandsRecyclerViewAdapter.notifyDataSetChanged());
 
         customCommandsRecyclerViewAdapter = new CustomCommandsRecyclerViewAdapter(context, customCommandsViewModel.getLiveDataCustomCommandsModelList().getValue());
         RecyclerView recyclerView = view.findViewById(R.id.f_customcommands_recyclerview);
@@ -124,16 +125,15 @@ public class CustomCommandsFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        final ViewGroup nullParent = null;
         final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View promptView = inflater.inflate(R.layout.customcommands_custom_dialog_view, nullParent);
+        final View promptView = inflater.inflate(R.layout.customcommands_custom_dialog_view, null);
         final TextView titleTextView = promptView.findViewById(R.id.f_customcommands_adb_tv_title1);
         final EditText storedpathEditText = promptView.findViewById(R.id.f_customcommands_adb_et_storedpath);
 
         switch (item.getItemId()){
             case R.id.f_customcommands_menu_backupDB:
-                titleTextView.setText("Full path to where you want to save the database:");
-                storedpathEditText.setText(NhPaths.APP_SD_SQLBACKUP_PATH + "/FragmentCustomCommands");
+                titleTextView.setText(R.string.full_path_db_save);
+                storedpathEditText.setText(MessageFormat.format("{0}/FragmentCustomCommands", NhPaths.APP_SD_SQLBACKUP_PATH));
                 AlertDialog.Builder adbBackup = new AlertDialog.Builder(activity);
                 adbBackup.setView(promptView);
                 adbBackup.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
@@ -155,8 +155,8 @@ public class CustomCommandsFragment extends Fragment {
                 adBackup.show();
                 break;
             case R.id.f_customcommands_menu_restoreDB:
-                titleTextView.setText("Full path of the db file from where you want to restore:");
-                storedpathEditText.setText(NhPaths.APP_SD_SQLBACKUP_PATH + "/FragmentCustomCommands");
+                titleTextView.setText(R.string.full_path_db_restore);
+                storedpathEditText.setText(MessageFormat.format("{0}/FragmentCustomCommands", NhPaths.APP_SD_SQLBACKUP_PATH));
                 AlertDialog.Builder adbRestore = new AlertDialog.Builder(activity);
                 adbRestore.setView(promptView);
                 adbRestore.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
@@ -195,11 +195,10 @@ public class CustomCommandsFragment extends Fragment {
 
     private void onAddItemSetup() {
         addButton.setOnClickListener(v -> {
-            final ViewGroup nullParent = null;
             List<CustomCommandsModel> customCommandsModelList = CustomCommandsData.getInstance().customCommandsModelListFull;
             if (customCommandsModelList == null) return;
             final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            final View promptViewAdd = inflater.inflate(R.layout.customcommands_add_dialog_view, nullParent);
+            final View promptViewAdd = inflater.inflate(R.layout.customcommands_add_dialog_view, null);
             final EditText commandLabelEditText = promptViewAdd.findViewById(R.id.f_customcommands_add_adb_et_label);
             final EditText commandEditText = promptViewAdd.findViewById(R.id.f_customcommands_add_adb_et_command);
             final Spinner sendToSpinner = promptViewAdd.findViewById(R.id.f_customcommands_add_adb_spr_sendto);
@@ -296,11 +295,10 @@ public class CustomCommandsFragment extends Fragment {
 
     private void onDeleteItemSetup() {
         deleteButton.setOnClickListener(v -> {
-            final ViewGroup nullParent = null;
             List<CustomCommandsModel> customCommandsModelList = CustomCommandsData.getInstance().customCommandsModelListFull;
             if (customCommandsModelList == null) return;
             final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            final View promptViewDelete = inflater.inflate(R.layout.customcommands_delete_dialog_view, nullParent, false);
+            final View promptViewDelete = inflater.inflate(R.layout.customcommands_delete_dialog_view, null, false);
             final RecyclerView recyclerViewDeleteItem = promptViewDelete.findViewById(R.id.f_customcommands_delete_recyclerview);
             CustomCommandsRecyclerViewAdapterDeleteItems customCommandsRecyclerViewAdapterDeleteItems = new CustomCommandsRecyclerViewAdapterDeleteItems(context, customCommandsModelList);
 
@@ -347,11 +345,10 @@ public class CustomCommandsFragment extends Fragment {
 
     private void onMoveItemSetup() {
         moveButton.setOnClickListener(v -> {
-            final ViewGroup nullParent = null;
             List<CustomCommandsModel> customCommandsModelList = CustomCommandsData.getInstance().customCommandsModelListFull;
             if (customCommandsModelList == null) return;
             final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            final View promptViewMove = inflater.inflate(R.layout.customcommands_move_dialog_view, nullParent, false);
+            final View promptViewMove = inflater.inflate(R.layout.customcommands_move_dialog_view, null, false);
             final Spinner titlesBefore = promptViewMove.findViewById(R.id.f_customcommands_move_adb_spr_labelsbefore);
             final Spinner titlesAfter = promptViewMove.findViewById(R.id.f_customcommands_move_adb_spr_labelsafter);
             final Spinner actions = promptViewMove.findViewById(R.id.f_customcommands_move_adb_spr_actions);

@@ -538,4 +538,6 @@
     <string name="chroot_now_running">Kali Chroot is now running!</string>
     <string name="chroot_not_started">Kali Chroot has not yet started!</string>
     <string name="chroot_not_installed">Kali Chroot is not yet installed!</string>
+    <string name="full_path_db_restore">Full path of the db file from where you want to restore:</string>
+    <string name="full_path_db_save">Full path to where you want to save the database:</string>
 </resources>
