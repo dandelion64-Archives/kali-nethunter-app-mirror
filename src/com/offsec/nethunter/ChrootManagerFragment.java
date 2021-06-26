@@ -9,11 +9,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.system.Os;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +30,7 @@ import com.offsec.nethunter.utils.SharePrefTag;
 import com.offsec.nethunter.utils.ShellExecuter;
 
 import java.io.File;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -44,7 +42,6 @@ import androidx.fragment.app.Fragment;
 
 
 public class ChrootManagerFragment extends Fragment {
-
     public static final String TAG = "ChrootManager";
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String IMAGE_SERVER = "images.kali.org";
@@ -63,14 +60,13 @@ public class ChrootManagerFragment extends Fragment {
     private Button backupChrootButton;
     private SharedPreferences sharedPreferences;
     private ChrootManagerAsynctask chrootManagerAsynctask;
-    private Intent backPressedintent = new Intent();
+    private final Intent backPressedintent = new Intent();
     private static final int IS_MOUNTED = 0;
     private static final int IS_UNMOUNTED = 1;
     private static final int NEED_TO_INSTALL = 2;
     public static boolean isAsyncTaskRunning = false;
     private Context context;
     private Activity activity;
-
 
     public static ChrootManagerFragment newInstance(int sectionNumber) {
         ChrootManagerFragment fragment = new ChrootManagerFragment();
@@ -168,7 +164,7 @@ public class ChrootManagerFragment extends Fragment {
             chrootPathEditText.setLayoutParams(editTextParams);
             availableChrootPathextview.setLayoutParams(editTextParams);
             availableChrootPathextview.setTextColor(getResources().getColor(R.color.clearTitle));
-            availableChrootPathextview.setText("\n List of available folder(s) in\n\"" + NhPaths.NH_SYSTEM_PATH + "/\":\n\n");
+            availableChrootPathextview.setText(MessageFormat.format("\n List of available folder(s) in\n\"{0}/\":\n\n", NhPaths.NH_SYSTEM_PATH));
             File chrootDir = new File(NhPaths.NH_SYSTEM_PATH);
             int count = 0;
             for (File file : Objects.requireNonNull(chrootDir.listFiles())) {
@@ -191,8 +187,8 @@ public class ChrootManagerFragment extends Fragment {
                 } else {
                     NhPaths.ARCH_FOLDER = chrootPathEditText.getText().toString();
                     kaliFolderTextView.setText(NhPaths.ARCH_FOLDER);
-                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_ARCH_SHAREPREF_TAG, NhPaths.ARCH_FOLDER).commit();
-                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_PATH_SHAREPREF_TAG, NhPaths.CHROOT_PATH()).commit();
+                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_ARCH_SHAREPREF_TAG, NhPaths.ARCH_FOLDER).apply();
+                    sharedPreferences.edit().putString(SharePrefTag.CHROOT_PATH_SHAREPREF_TAG, NhPaths.CHROOT_PATH()).apply();
                     new ShellExecuter().RunAsRootOutput("ln -sfn " + NhPaths.CHROOT_PATH() + " " + NhPaths.CHROOT_SYMLINK_PATH);
                     compatCheck();
                 }
@@ -271,7 +267,7 @@ public class ChrootManagerFragment extends Fragment {
             Button restoreButton2 = new Button(activity);
             LinearLayout.LayoutParams optionButtonParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             optionButtonParams.setMargins(58,0,58,0);
-            downloadButton1.setText("DOWNLOAD LATEST KALI CHROOT FROM OFFICIAL IMAGE");
+            downloadButton1.setText(R.string.dl_latest_chroot_img);
             downloadButton1.setLayoutParams(optionButtonParams);
             restoreButton2.setText("RESTORE FROM LOCAL STORAGE\n(.TAR.GZ /.TAR.XZ)");
             restoreButton2.setLayoutParams(optionButtonParams);
@@ -331,7 +327,7 @@ public class ChrootManagerFragment extends Fragment {
                 EditText chrootTarFileEditText = new EditText(activity);
                 LinearLayout.LayoutParams editTextParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 editTextParams.setMargins(58,40,58,0);
-                chrootTarHintTextView.setText("Type the full path of your Kali Chroot tarball file:");
+                chrootTarHintTextView.setText(R.string.full_path_chroot_tarball);
                 chrootTarHintTextView.setLayoutParams(editTextParams);
                 chrootTarFileEditText.setText(sharedPreferences.getString(SharePrefTag.CHROOT_DEFAULT_BACKUP_SHAREPREF_TAG, ""));
                 chrootTarFileEditText.setLayoutParams(editTextParams);
@@ -344,7 +340,6 @@ public class ChrootManagerFragment extends Fragment {
                     chrootManagerAsynctask.setListener(new ChrootManagerAsynctask.ChrootManagerAsyncTaskListener() {
                         @Override
                         public void onAsyncTaskPrepare() {
-
                             context.startService(new Intent(context, NotificationChannelService.class).setAction(NotificationChannelService.INSTALLING));
                             broadcastBackPressedIntent(false);
                             setAllButtonEnable(false);
@@ -507,7 +502,7 @@ public class ChrootManagerFragment extends Fragment {
                 try {
                     Intent intent = new Intent("com.offsec.nhterm.RUN_SCRIPT_NH");
                     intent.addCategory(Intent.CATEGORY_DEFAULT);
-                    intent.putExtra("com.offsec.nhterm.iInitialCommand", NhPaths.makeTermTitle("Updating") + "apt update && apt install " + sb.toString() + " -y && echo \"(You can close the terminal now)\n\"");
+                    intent.putExtra("com.offsec.nhterm.iInitialCommand", NhPaths.makeTermTitle("Updating") + "apt update && apt install " + sb + " -y && echo \"(You can close the terminal now)\n\"");
                     startActivity(intent);
                 } catch (Exception e) {
                     NhPaths.showMessage(context, getString(R.string.toast_install_terminal));
@@ -626,13 +621,13 @@ public class ChrootManagerFragment extends Fragment {
     private void setMountStatsTextView(int MODE) {
         if (MODE == IS_MOUNTED) {
             mountStatsTextView.setTextColor(Color.GREEN);
-            mountStatsTextView.setText("Kali Chroot is now running!");
+            mountStatsTextView.setText(R.string.chroot_now_running);
         } else if  (MODE == IS_UNMOUNTED) {
             mountStatsTextView.setTextColor(Color.CYAN);
-            mountStatsTextView.setText("Kali Chroot has not yet started!");
+            mountStatsTextView.setText(R.string.chroot_not_started);
         } else if  (MODE == NEED_TO_INSTALL) {
             mountStatsTextView.setTextColor(Color.parseColor("#D81B60"));
-            mountStatsTextView.setText("Kali Chroot is not yet installed!");
+            mountStatsTextView.setText(R.string.chroot_not_installed);
         }
     }
 
