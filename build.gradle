@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'androidx.core:core:1.5.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -33,7 +34,6 @@ dependencies {
 }
 
 android {
-
     compileSdkVersion 29
     buildToolsVersion '29.0.3'
 
@@ -66,11 +66,9 @@ android {
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
         }
-
     }
 
     signingConfigs {
-
         debug {
             storeFile file("${System.properties['user.home']}" + "/.android/debug.keystore")
         }
@@ -93,7 +91,6 @@ android {
     }
 
     buildTypes {
-
         debug {
             minifyEnabled false
             buildConfigField "java.util.Date", "BUILD_TIME", "new java.util.Date(" + System.currentTimeMillis() + "L)"
