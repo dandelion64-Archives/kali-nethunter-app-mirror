@@ -3,7 +3,6 @@ package com.offsec.nethunter.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
-import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -11,11 +10,10 @@ import com.offsec.nethunter.BuildConfig;
 
 import java.io.File;
 
-
 public class NhPaths implements SharedPreferences.OnSharedPreferenceChangeListener{
-    private static final String TAG = "NhPaths";
+    public static final String TAG = "NhPaths";
     private static NhPaths instance;
-    private SharedPreferences sharedPreferences;
+    private final SharedPreferences sharedPreferences;
 
     public static String APP_PATH;
     public static String APP_DATABASE_PATH;
@@ -25,7 +23,7 @@ public class NhPaths implements SharedPreferences.OnSharedPreferenceChangeListen
     public static String NH_SD_FOLDER_NAME;
     public static String SD_PATH;
     public static String APP_SD_FILES_PATH;
-    private static String BASE_PATH;
+    public static String BASE_PATH;
     public static String NH_SYSTEM_PATH;
     public static String ARCH_FOLDER;
     public static String CHROOT_SD_PATH;

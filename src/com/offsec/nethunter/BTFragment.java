@@ -90,7 +90,6 @@ public class BTFragment extends Fragment {
         sharedpreferences = activity.getSharedPreferences("com.offsec.nethunter", Context.MODE_PRIVATE);
         setHasOptionsMenu(true);
         return rootView;
-
     }
 
     @Override
@@ -196,7 +195,7 @@ public class BTFragment extends Fragment {
 
     public static class MainFragment extends BTFragment {
         private Context context;
-        private NhPaths nh;
+        public NhPaths nh;
         final ShellExecuter exe = new ShellExecuter();
         private String selected_iface;
         String selected_addr;
@@ -370,7 +369,7 @@ public class BTFragment extends Fragment {
                         PreferencesData.saveString(context, "selected_address", selected_addr);
                         PreferencesData.saveString(context, "selected_class", selected_class);
                         PreferencesData.saveString(context, "selected_name", selected_name);
-                        Toast.makeText(getActivity().getApplicationContext(), "Target selected!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(), "Target selected!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -378,7 +377,6 @@ public class BTFragment extends Fragment {
         }
 
         private void refresh(View BTFragment) {
-
             final TextView DBUSstatus = BTFragment.findViewById(R.id.DBUSstatus);
             final TextView BTstatus = BTFragment.findViewById(R.id.BTstatus);
             final TextView HCIstatus = BTFragment.findViewById(R.id.HCIstatus);
@@ -540,7 +538,7 @@ public class BTFragment extends Fragment {
                 if (!blueranger_target.equals(""))
                     intentClickListener_NH("echo -ne \"\\033]0;Blueranger\\007\" && clear;blueranger " + blueranger_interface + " " + blueranger_target);
                 else
-                    Toast.makeText(getActivity().getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Objects.requireNonNull(getActivity()).getApplicationContext(), "No target address!", Toast.LENGTH_SHORT).show();
             });
 
             //Start SDP Tool
@@ -645,7 +643,6 @@ public class BTFragment extends Fragment {
         }
 
         private void refreshSpoof(View BTFragment) {
-
             ShellExecuter exe = new ShellExecuter();
             final EditText spoof_interface = BTFragment.findViewById(R.id.spoof_interface);
             final TextView currentAddress = BTFragment.findViewById(R.id.currentAddress);
@@ -834,5 +831,4 @@ public class BTFragment extends Fragment {
             return sharedPrefs.getString(key, defaultValue);
         }
     }
-
 }

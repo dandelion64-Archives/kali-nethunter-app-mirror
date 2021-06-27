@@ -33,11 +33,11 @@ import androidx.viewpager.widget.ViewPager;
 public class DuckHunterFragment extends Fragment {
     private static SharedPreferences sharedpreferences;
     // Language vars
-    private static HashMap<String, String> map = new HashMap<>();
+    private static final HashMap<String, String> map = new HashMap<>();
     public static String lang = "us"; // Set US as default language
     private static String[] keyboardLayoutString;
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private static final String TAG = "DuckHunterFragment";
+    public static final String TAG = "DuckHunterFragment";
     private Context context;
     private Activity activity;
     private Menu menu;
@@ -46,7 +46,7 @@ public class DuckHunterFragment extends Fragment {
     private String duckyOutputFile;
     private boolean isReceiverRegistered;
     private boolean shouldconvert = true;
-    private DuckHuntBroadcastReceiver duckHuntBroadcastReceiver = new DuckHuntBroadcastReceiver();
+    private final DuckHuntBroadcastReceiver duckHuntBroadcastReceiver = new DuckHuntBroadcastReceiver();
 
     public static DuckHunterFragment newInstance(int sectionNumber) {
         DuckHunterFragment fragment = new DuckHunterFragment();
@@ -116,7 +116,6 @@ public class DuckHunterFragment extends Fragment {
                 }
             }
         }
-
         return rootView;
     }
 
@@ -209,19 +208,17 @@ public class DuckHunterFragment extends Fragment {
     }
 
     public class TabsPagerAdapter extends FragmentStatePagerAdapter {
-
         TabsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int i) {
-            switch (i) {
-                case 1:
-                    return new DuckHunterPreviewFragment(duckyInputFile, duckyOutputFile);
-                default:
-                    return new DuckHunterConvertFragment(duckyInputFile, duckyOutputFile);
+            if (i == 1) {
+                return new DuckHunterPreviewFragment(duckyInputFile, duckyOutputFile);
             }
+            return new DuckHunterConvertFragment(duckyInputFile, duckyOutputFile);
         }
 
         @Override
@@ -236,24 +233,19 @@ public class DuckHunterFragment extends Fragment {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 1:
-                    return "Preview";
-                default:
-                    return "Convert";
+            if (position == 1) {
+                return "Preview";
             }
+            return "Convert";
         }
     }
 
     public class DuckHuntBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            switch (intent.getStringExtra("ACTION")){
-                case "SHOULDCONVERT":
-                    shouldconvert = intent.getBooleanExtra("SHOULDCONVERT", true);
-                    break;
+            if ("SHOULDCONVERT".equals(intent.getStringExtra("ACTION"))) {
+                shouldconvert = intent.getBooleanExtra("SHOULDCONVERT", true);
             }
         }
     }
 }
-

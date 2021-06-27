@@ -7,9 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.offsec.nethunter.RecyclerViewData.KaliServicesData;
-import com.offsec.nethunter.RecyclerViewData.NethunterData;
 import com.offsec.nethunter.models.KaliServicesModel;
-import com.offsec.nethunter.models.NethunterModel;
 
 import java.util.List;
 
