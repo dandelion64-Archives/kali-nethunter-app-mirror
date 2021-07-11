@@ -36,15 +36,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static com.offsec.nethunter.R.id.f_nethunter_action_search;
 
-
 public class NetHunterFragment extends Fragment {
-
     private static final String ARG_SECTION_NUMBER = "section_number";
     private Context context;
     private Activity activity;
@@ -80,7 +78,7 @@ public class NetHunterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        NethunterViewModel nethunterViewModel = ViewModelProviders.of(this).get(NethunterViewModel.class);
+        NethunterViewModel nethunterViewModel = new ViewModelProvider(this).get(NethunterViewModel.class);
         nethunterViewModel.init(context);
 
         nethunterViewModel.getLiveDataNethunterModelList().observe(getViewLifecycleOwner(), nethunterModelList -> {

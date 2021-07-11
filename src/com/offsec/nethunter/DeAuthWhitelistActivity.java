@@ -16,7 +16,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DeAuthWhitelistActivity extends AppCompatActivity {
-
     private Activity activity;
     private final ShellExecuter exe = new ShellExecuter();
 
