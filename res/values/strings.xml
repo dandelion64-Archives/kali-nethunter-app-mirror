@@ -421,7 +421,6 @@
         <item>KALI</item>
         <item>ANDROID</item>
     </string-array>
-    <string name="cancel">Cancel</string>
     <string name="extract_chroot">Decompressing and deploying the Chroot… (~5–10 min)</string>
 
     <!-- Start NMAP -->
@@ -533,4 +532,8 @@
 
     <!-- dummy_accessibility_service -->
     <string name="dummy_accessibility_service">dummy_accessibility_service</string>
+    <string name="full_db_file_restore">Full path of the db file from where you want to restore:</string>
+    <string name="cancel">Cancel</string>
+    <string name="full_db_path_save">Full path to where you want to save the database:</string>
+    <string name="ok">OK</string>
 </resources>
