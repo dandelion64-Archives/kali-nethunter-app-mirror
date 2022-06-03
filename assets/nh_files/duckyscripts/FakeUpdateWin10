@@ -1,6 +1,7 @@
 GUI r
 DELAY 500
-STRING iexplore -k https://fakeupdate.net/win10ue/
+REM since IE will be not available on Windows 11 or on recent Windows 10 build
+REM iexplore -k https://fakeupdate.net/win10ue/
 REM you can do it with edge but you will get a notification to press F11 to exit the full screen
-REM msegde --start-fullscreen https://fakeupdate.net/win10ue/
+STRING msedge --start-fullscreen https://fakeupdate.net/win10ue/
 ENTER
